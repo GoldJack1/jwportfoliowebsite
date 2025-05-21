@@ -325,13 +325,35 @@ main {
 
 .hero-title {
   font-family: 'Geologica';
-  font-size: 93px;
+  font-size: clamp(32px, 8vw, 93px);
   font-weight: 700;
   margin: 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #fff;
   text-align: left;
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    height: 50vh;
+    min-height: 400px;
+    max-height: 600px;
+  }
+  .hero-title {
+    font-size: clamp(28px, 7vw, 56px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    height: 32vh;
+    min-height: 180px;
+    max-height: 320px;
+  }
+  .hero-title {
+    font-size: clamp(20px, 10vw, 32px);
+  }
 }
 
 .footer {
