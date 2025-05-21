@@ -11,13 +11,9 @@ export default function StaticImageTextHeader({
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       display: 'flex',
-      alignItems: 'flex-start',
       justifyContent: 'flex-start',
       position: 'relative',
       width: '100vw',
-      height: '80vh',
-      minHeight: '900px',
-      maxHeight: '900px',
     }}>
       <div className="hero-content section-inner">
         <h1 className="hero-title">{title.split('\n').map((line, i) => (
