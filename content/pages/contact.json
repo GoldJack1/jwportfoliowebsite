@@ -1,15 +1,16 @@
 {
-  "type": "Page",
-  "title": "Contact",
-  "body": "Get in touch with us.",
-  "header": {
-    "type": "StaticFillTextHeader",
-    "title": "Contact",
-    "background": "linear-gradient(135deg, #0074D9 0%, #fff 100%)"
-  },
-  "footer": {
-    "type": "Footer",
-    "info": "Jack Wingate",
-    "copyright": "© 2025 All Rights Reserved"
-  }
-} 
+    "type": "Page",
+    "title": "Contact us",
+    "body": "Get in touch with us.",
+    "header": {
+        "type": "StaticFillTextHeader",
+        "title": "Contact us ",
+        "background": "linear-gradient(135deg, #0074D9 0%, #fff 100%)"
+    },
+    "footer": {
+        "type": "Footer",
+        "info": "Jack Wingate",
+        "copyright": "© 2025 All Rights Reserved"
+    },
+    "markdown_content": "fdjksfd\n"
+}
