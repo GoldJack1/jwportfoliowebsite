@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../stackbit.config.ts"],
+  "sourcesContent": ["import { defineStackbitConfig } from \"@stackbit/types\";\nimport { GitContentSource } from \"@stackbit/cms-git\";\n\nexport default defineStackbitConfig({\n  stackbitVersion: \"~0.3.0\",\n  contentSources: [\n    new GitContentSource({\n      rootPath: __dirname,\n      contentDirs: [\"content\"],\n      models: [\n        {\n          name: \"Page\",\n          type: \"page\",\n          urlPath: \"/{slug}\",\n          filePath: \"content/pages/{slug}.json\",\n          fields: [\n            { name: \"title\", type: \"string\", required: true },\n            { name: \"body\", type: \"string\", required: true }\n          ]\n        }\n      ],\n    })\n  ]\n}); "],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,mBAAqC;AACrC,qBAAiC;AAEjC,IAAO,8BAAQ,mCAAqB;AAAA,EAClC,iBAAiB;AAAA,EACjB,gBAAgB;AAAA,IACd,IAAI,gCAAiB;AAAA,MACnB,UAAU;AAAA,MACV,aAAa,CAAC,SAAS;AAAA,MACvB,QAAQ;AAAA,QACN;AAAA,UACE,MAAM;AAAA,UACN,MAAM;AAAA,UACN,SAAS;AAAA,UACT,UAAU;AAAA,UACV,QAAQ;AAAA,YACN,EAAE,MAAM,SAAS,MAAM,UAAU,UAAU,KAAK;AAAA,YAChD,EAAE,MAAM,QAAQ,MAAM,UAAU,UAAU,KAAK;AAAA,UACjD;AAAA,QACF;AAAA,MACF;AAAA,IACF,CAAC;AAAA,EACH;AACF,CAAC;",
+  "names": []
+}
