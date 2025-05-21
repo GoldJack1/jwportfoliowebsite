@@ -1,5 +1,15 @@
 {
   "type": "Page",
   "title": "Home",
-  "body": "Welcome to the homepage!"
+  "body": "Welcome to the homepage!",
+  "header": {
+    "type": "StaticFillTextHeader",
+    "title": "Welcome to my\nportfolio",
+    "background": "linear-gradient(0deg, rgba(0,0,0,0.29), rgba(0,0,0,0.29))"
+  },
+  "footer": {
+    "type": "Footer",
+    "info": "Jack Wingate",
+    "copyright": "© 2025 All Rights Reserved"
+  }
 } 

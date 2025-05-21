@@ -9,13 +9,31 @@ export default defineStackbitConfig({
       contentDirs: ["content"],
       models: [
         {
+          name: "StaticFillTextHeader",
+          type: "object",
+          fields: [
+            { name: "title", type: "string", required: true },
+            { name: "background", type: "string" }
+          ]
+        },
+        {
+          name: "Footer",
+          type: "object",
+          fields: [
+            { name: "info", type: "string" },
+            { name: "copyright", type: "string" }
+          ]
+        },
+        {
           name: "Page",
           type: "page",
           urlPath: "/{slug}",
           filePath: "content/pages/{slug}.json",
           fields: [
             { name: "title", type: "string", required: true },
-            { name: "body", type: "string", required: true }
+            { name: "body", type: "string" },
+            { name: "header", type: "model", models: ["StaticFillTextHeader"] },
+            { name: "footer", type: "model", models: ["Footer"] }
           ]
         }
       ],
