@@ -1,14 +1,12 @@
+import React from 'react';
+import Footer from '../components/Footer';
+import StaticFillTextHeader from '../components/StaticFillTextHeader';
+
 export default function About() {
   return (
-    <main>
-      <h1>This is the About page</h1>
-      <p>Share your story, background, and skills here.</p>
-      <section style={{height: 400, background: "#f7f7f7", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid #e0e0e0"}}>
-        <h2>Placeholder Section 1</h2>
-      </section>
-      <section style={{height: 400, background: "#f0f0f0", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid #e0e0e0"}}>
-        <h2>Placeholder Section 2</h2>
-      </section>
-    </main>
+    <div>
+      <StaticFillTextHeader title="About" background="linear-gradient(135deg, #ff0000 0%, #fff 100%)" />
+      <Footer />
+    </div>
   );
 } 

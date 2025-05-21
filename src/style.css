@@ -1,7 +1,18 @@
+html, body, #root {
+  min-height: 100vh;
+  background: #000;
+}
 body {
   margin: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  background: #fff;
+  font-family: "Geologica", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0,
+    "SHRP" 0;
+  background: #000;
 }
 .nav-wrapper {
   display: flex;
@@ -84,4 +95,108 @@ main {
   margin-top: 65px;
   padding: 32px;
   text-align: center;
+}
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+.hero {
+  width: 100vw;
+  height: 80vh;
+  min-height: 900px;
+  max-height: 900px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.29), rgba(0,0,0,0.29)), url('/IMG_6734.JPG');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 41px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.section-inner {
+  /* Add any section-inner specific styles here if needed */
+}
+
+.hero-title {
+  font-family: 'Geologica';
+  font-size: 93px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-align: left;
+}
+
+.footer {
+  width: 100vw;
+  min-height: 162px;
+  background: #000;
+  border-radius: 0px;
+  display: block;
+  padding: 40px 0px 20px;
+  gap: 21px;
+  margin-top: 0;
+  text-align: left;
+}
+
+.footer-content, .footer-bottom, .footer-info, .footer-social {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+.footer-info {
+  color: #fff;
+  font-family: 'Geologica';
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  text-align: left;
+  margin-left: 0;
+}
+
+.footer-bottom {
+  display: block;
+  font-family: 'Geologica';
+  font-size: 14px;
+  font-weight: 200;
+  color: #fff;
+  text-align: left;
+  margin-left: 0;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.footer-social a {
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.footer-content.section-inner,
+.footer-bottom.section-inner {
+  padding-left: 41px;
 } 
