@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    allowedHosts: 'all'
+    allowedHosts: [
+      'all',
+      'devserver-main--jackwingateportfolio.netlify.app'
+    ]
   }
 })
