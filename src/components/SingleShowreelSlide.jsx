@@ -29,7 +29,7 @@ const outerStyle = {
 };
 
 export default function SingleShowreelSlide({
-  slide, // { type: 'image' | 'video', src, poster? }
+  slide, // { type: 'image' | 'video', src, poster? } (optional)
   overlayData, // { title, description, availability, buttonText }
   showButton = true,
   imagePosition = 'center',
@@ -80,7 +80,7 @@ export default function SingleShowreelSlide({
     <div style={outerStyle}>
       <div style={containerStyle} className={containerClass}>
         <div style={slideStyle}>
-          {slide.type === 'video' ? (
+          {slide && slide.type === 'video' ? (
             <video
               src={slide.src}
               poster={slide.poster}
@@ -96,7 +96,7 @@ export default function SingleShowreelSlide({
               muted
               playsInline
             />
-          ) : (
+          ) : slide && slide.type === 'image' ? (
             <img
               src={slide.src}
               alt={overlayData?.title || 'Showreel Slide'}
@@ -109,7 +109,7 @@ export default function SingleShowreelSlide({
                 background: 'transparent',
               }}
             />
-          )}
+          ) : null}
           {overlayData && (
             <ShowreelOverlay
               title={overlayData.title}

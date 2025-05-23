@@ -6,10 +6,9 @@ export default function About() {
   return (
     <div>
       <SingleShowreelSlide
-        slide={{ type: 'image', src: '/about-main-imgs/about-hero.jpg' }}
         overlayData={{
           title: 'About',
-          description: 'This page is under construction.',
+          description: 'This page is under construction',
           availability: '',
           buttonText: ''
         }}

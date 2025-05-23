@@ -6,7 +6,6 @@ export default function Contact() {
   return (
     <div>
       <SingleShowreelSlide
-        slide={{ type: 'background'
         overlayData={{
           title: 'Contact',
           description: 'This page is under construction.',

@@ -165,18 +165,18 @@ export default function WorkShowreelSlider({ slides = defaultSlides, overlayData
                   playsInline
                 />
               ) : (
-                <img
+              <img
                   src={slide.src}
-                  alt={`Work Slide ${idx + 1}`}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: imagePositions[idx] || 'center',
-                    display: 'block',
-                    background: '#000',
-                  }}
-                />
+                alt={`Work Slide ${idx + 1}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: imagePositions[idx] || 'center',
+                  display: 'block',
+                  background: '#000',
+                }}
+              />
               )}
               {overlayData[idx] && (
                 <ShowreelOverlay
