@@ -8,13 +8,13 @@ import GlassMorphButton from './GlassMorphButton';
 import './WorkShowreelSliderOverlay.css';
 import ShowreelOverlay from './ShowreelOverlay';
 
-const images = [
+const defaultImages = [
   '/work-main-imgs/work 1.jpg',
   '/work-main-imgs/work 2.jpg',
   '/work-main-imgs/work 3.jpg',
 ];
 
-const overlayData = [
+const defaultOverlayData = [
   {
     title: 'Great British Railways',
     description: "A new era for Britain's railways, uniting track and train under one brand.",
@@ -60,7 +60,7 @@ const slideStyle = {
   justifyContent: 'center',
 };
 
-export default function WorkShowreelSlider() {
+export default function WorkShowreelSlider({ images = defaultImages, overlayData = defaultOverlayData, showButton = true, imagePositions = [] }) {
   // Add hooks to detect mobile and tablet screen
   const [isMobile, setIsMobile] = useState(false);
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(false);
@@ -128,16 +128,20 @@ export default function WorkShowreelSlider() {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
+                  objectPosition: imagePositions[idx] || 'center',
                   display: 'block',
                   background: '#000',
                 }}
               />
-              <ShowreelOverlay
-                title={overlayData[idx].title}
-                description={overlayData[idx].description}
-                availability={overlayData[idx].availability}
-                buttonText={overlayData[idx].buttonText}
-              />
+              {overlayData[idx] && (
+                <ShowreelOverlay
+                  title={overlayData[idx].title}
+                  description={overlayData[idx].description}
+                  availability={overlayData[idx].availability}
+                  buttonText={overlayData[idx].buttonText}
+                  showButton={showButton}
+                />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
