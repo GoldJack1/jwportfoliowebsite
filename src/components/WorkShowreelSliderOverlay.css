@@ -103,10 +103,6 @@
   .work-showreel-slider-overlay .availability {
     font-size: 13pt;
   }
-  .work-showreel-swiper .swiper-pagination {
-    left: 16px;
-    bottom: 24px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -151,15 +147,6 @@
     padding-left: 18px;
     padding-right: 18px;
   }
-  .work-showreel-swiper .swiper-pagination {
-    left: 6vw;
-    right: auto;
-    width: auto;
-    max-width: 75vw;
-    box-sizing: border-box;
-    justify-content: flex-start;
-    bottom: 12px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -169,15 +156,15 @@
 }
 
 .work-showreel-swiper .swiper-pagination {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 24px;
-  z-index: 100;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  bottom: 24px !important;
+  z-index: 100 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .work-showreel-swiper .swiper-pagination-bullet {

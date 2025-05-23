@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -8,10 +8,22 @@ import GlassMorphButton from './GlassMorphButton';
 import './WorkShowreelSliderOverlay.css';
 import ShowreelOverlay from './ShowreelOverlay';
 
-const defaultImages = [
-  '/work-main-imgs/work 1.jpg',
-  '/work-main-imgs/work 2.jpg',
-  '/work-main-imgs/work 3.jpg',
+// Default slides: support both images and videos
+const defaultSlides = [
+  {
+    type: 'image',
+    src: '/work-main-imgs/work 1.jpg',
+  },
+  {
+    type: 'video',
+    src: '/work-main-imgs/sample-video.mp4', // Example video (should be mp4)
+    poster: '/work-main-imgs/work 2.jpg', // Optional poster image
+  },
+  {
+    type: 'video',
+    src: '/work-main-imgs/Slide-3-webtext.mp4',
+    poster: '/work-main-imgs/work 3.jpg', // Use previous image as poster
+  },
 ];
 
 const defaultOverlayData = [
@@ -60,10 +72,13 @@ const slideStyle = {
   justifyContent: 'center',
 };
 
-export default function WorkShowreelSlider({ images = defaultImages, overlayData = defaultOverlayData, showButton = true, imagePositions = [] }) {
+export default function WorkShowreelSlider({ slides = defaultSlides, overlayData = defaultOverlayData, showButton = true, imagePositions = [] }) {
   // Add hooks to detect mobile and tablet screen
   const [isMobile, setIsMobile] = useState(false);
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(false);
+  const videoRefs = useRef([]);
+  const swiperRef = useRef(null);
+
   useEffect(() => {
     const checkScreen = () => {
       setIsMobile(window.innerWidth <= 600);
@@ -73,6 +88,16 @@ export default function WorkShowreelSlider({ images = defaultImages, overlayData
     window.addEventListener('resize', checkScreen);
     return () => window.removeEventListener('resize', checkScreen);
   }, []);
+
+  // Handler to play video from start when slide becomes active
+  const handleSlideChange = (swiper) => {
+    const idx = swiper.realIndex;
+    if (slides[idx] && slides[idx].type === 'video' && videoRefs.current[idx]) {
+      const vid = videoRefs.current[idx];
+      vid.currentTime = 0;
+      vid.play();
+    }
+  };
 
   let containerStyle = sliderStyle;
   let containerClass = '';
@@ -106,7 +131,6 @@ export default function WorkShowreelSlider({ images = defaultImages, overlayData
     <div style={outerStyle}>
       <div
         style={containerStyle}
-        className={containerClass}
       >
         <Swiper
           modules={[EffectFade, Autoplay, Pagination]}
@@ -118,21 +142,42 @@ export default function WorkShowreelSlider({ images = defaultImages, overlayData
           pagination={{ clickable: true }}
           className="work-showreel-swiper"
           style={{ width: '100%', height: '100%' }}
+          onSlideChange={handleSlideChange}
+          onSwiper={(swiper) => { swiperRef.current = swiper; }}
         >
-          {images.map((src, idx) => (
+          {slides.map((slide, idx) => (
             <SwiperSlide key={idx} style={slideStyle}>
-              <img
-                src={src}
-                alt={`Work Slide ${idx + 1}`}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: imagePositions[idx] || 'center',
-                  display: 'block',
-                  background: '#000',
-                }}
-              />
+              {slide.type === 'video' ? (
+                <video
+                  ref={el => videoRefs.current[idx] = el}
+                  src={slide.src}
+                  poster={slide.poster}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: imagePositions[idx] || 'center',
+                    display: 'block',
+                    background: '#000',
+                  }}
+                  autoPlay
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={slide.src}
+                  alt={`Work Slide ${idx + 1}`}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: imagePositions[idx] || 'center',
+                    display: 'block',
+                    background: '#000',
+                  }}
+                />
+              )}
               {overlayData[idx] && (
                 <ShowreelOverlay
                   title={overlayData[idx].title}
