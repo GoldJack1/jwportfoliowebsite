@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <div>
       <SingleShowreelSlide
-        slide={{ type: 'image', src: '/contact-main-imgs/contact-hero.jpg' }}
+        slide={{ type: 'background'
         overlayData={{
           title: 'Contact',
           description: 'This page is under construction.',
