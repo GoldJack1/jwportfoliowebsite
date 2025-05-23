@@ -19,12 +19,17 @@
   font-family: 'Geologica';
 }
 
+.work-showreel-swiper {
+  position: relative;
+  overflow: visible;
+}
+
 .overlay-content-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0px;
-  max-width: 700px;
+  gap: 8px;
+  max-width: 40vw;
   text-align: left;
 }
 
@@ -38,7 +43,7 @@
 
 .work-showreel-slider-overlay h1 {
   color: #fff;
-  font-size: 4rem;
+  font-size: 35pt;
   font-family: 'Geologica', sans-serif;
   font-weight: 500;
   font-variation-settings: 'crav' 1;
@@ -50,7 +55,7 @@
 .work-showreel-slider-overlay .subtitle,
 .work-showreel-slider-overlay .availability {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 15pt;
   font-family: 'Geologica', sans-serif;
   font-weight: 400;
   font-variation-settings: 'crav' 1;
@@ -75,31 +80,104 @@
   min-width: 150px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1075px) {
   .work-showreel-slider-overlay {
-    padding: 40px 8px 40px 16px;
+    padding: 40px 4vw 40px 4vw;
   }
   .overlay-content-group {
-    gap: 20px;
-    max-width: 95vw;
+    gap: 16px;
+    max-width: 50vw;
   }
   .work-showreel-slider-overlay h1 {
-    font-size: 2.2rem;
+    font-size: 28pt;
+    margin-bottom: 6px;
   }
   .work-showreel-slider-overlay .subtitle {
+    font-size: 18pt;
+    margin-bottom: 4px;
+  }
+  .work-showreel-slider-overlay .glass-morph-button {
+    margin-top: 12px;
+    min-width: 100px;
+  }
+  .work-showreel-slider-overlay .availability {
+    font-size: 13pt;
+  }
+  .work-showreel-swiper .swiper-pagination {
+    left: 16px;
+    bottom: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .work-showreel-slider-mobile {
+    height: calc(100vh - 180px) !important;
+    min-height: 300px;
+    aspect-ratio: unset !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    position: relative;
+  }
+  .work-showreel-slider-overlay {
+    padding: 32px 6vw 32px 6vw;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 35%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0.4) 100%);
+  }
+  .overlay-content-group {
+    gap: 6px;
+    max-width: 75vw;
+  }
+  .work-showreel-slider-overlay h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .work-showreel-slider-overlay .subtitle {
+    font-size: 1.15rem;
+  }
+  .work-showreel-slider-overlay .availability {
     font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .work-showreel-slider-overlay .glass-morph-button {
+    font-size: 1.1rem;
+    min-width: 120px;
+    margin-top: 4px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .work-showreel-swiper .swiper-pagination {
+    left: 6vw;
+    right: auto;
+    width: auto;
+    max-width: 75vw;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .work-showreel-slider-mobile {
+    height: calc(100vh - 30px) !important;
   }
 }
 
 .work-showreel-swiper .swiper-pagination {
   position: absolute;
-  left: 72px;
-  bottom: 48px;
-  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  z-index: 100;
   display: flex;
   flex-direction: row;
-  z-index: 10;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
 .work-showreel-swiper .swiper-pagination-bullet {
@@ -116,4 +194,39 @@
   background: #fff;
   opacity: 1;
   box-shadow: 0 0 0 2px rgba(0,0,0,0.18);
-} 
+}
+
+.custom-swiper-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  margin: 0;
+  width: auto;
+  max-width: 90vw;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.6;
+  width: 14px;
+  height: 14px;
+  margin: 0 6px 0 0;
+  border-radius: 50%;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  background: #fff;
+  opacity: 1;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.18);
+}
+
+/* Remove mobile absolute positioning for swiper-pagination */
+ 

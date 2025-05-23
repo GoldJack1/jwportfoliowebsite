@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -61,9 +61,53 @@ const slideStyle = {
 };
 
 export default function WorkShowreelSlider() {
+  // Add hooks to detect mobile and tablet screen
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(false);
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth <= 600);
+      setIsTabletOrSmaller(window.innerWidth <= 900);
+    };
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
+
+  let containerStyle = sliderStyle;
+  let containerClass = '';
+  if (isMobile) {
+    containerStyle = {
+      width: '100vw',
+      height: 'calc(100vh - 80px)', // 80px header height, adjust as needed
+      background: '#000',
+      overflow: 'hidden',
+      borderRadius: 0,
+      position: 'relative',
+      minWidth: 0,
+      minHeight: 0,
+    };
+    containerClass = 'work-showreel-slider-mobile';
+  } else if (isTabletOrSmaller) {
+    containerStyle = {
+      width: '100vw',
+      height: 'calc(100vh - 30px)', // Expanded height for <900px
+      background: '#000',
+      overflow: 'hidden',
+      borderRadius: 0,
+      position: 'relative',
+      minWidth: 0,
+      minHeight: 0,
+    };
+    containerClass = 'work-showreel-slider-mobile'; // Reuse the class for styling
+  }
+
   return (
     <div style={outerStyle}>
-      <div style={sliderStyle}>
+      <div
+        style={containerStyle}
+        className={containerClass}
+      >
         <Swiper
           modules={[EffectFade, Autoplay, Pagination]}
           effect="fade"
