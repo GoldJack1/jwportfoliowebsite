@@ -77,6 +77,16 @@ body {
     "SHRP" 0;
   background: #000;
 }
+body.force-mobile .main-container {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100vw;
+}
+body.force-mobile .hero {
+  height: 32vh;
+  min-height: 180px;
+  max-height: 320px;
+}
 .nav-wrapper {
   display: flex;
   justify-content: center;
