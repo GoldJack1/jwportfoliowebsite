@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900;crav@0..100@500:crav@1&display=swap');
+
+.glass-morph-button,
+.glass-morph-button:active,
+.glass-morph-button:focus,
+.glass-morph-button:visited,
+.glass-morph-button:hover {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 6px;
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  top: 20px;
+  bottom: auto;
+  background: rgba(137, 137, 137, 0.48);
+  /* Static shadow for all states */
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  border-radius: 75px;
+  font-family: 'Geologica', sans-serif;
+  font-weight: 500;
+  font-variation-settings: 'crav' 1;
+  color: #fff;
+  font-size: 1.25rem;
+  text-align: center;
+  white-space: nowrap;
+  transition: none;
+  transform: none;
+  overflow: hidden;
+}
+
+/* Hover state */
+.glass-morph-button:hover,
+.glass-morph-button:focus-visible {
+  background: rgba(137, 137, 137, 0.48);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  color: #fff;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Clicked state */
+.glass-morph-button.clicked,
+.glass-morph-button:active {
+  background: rgba(137, 137, 137, 0.48);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  color: #fff;
+  border: none;
+  transform: scale(0.98);
+  box-sizing: border-box;
+}
+
+/* Focus state for accessibility */
+.glass-morph-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* Alternative version for relative positioning */
+.glass-morph-button.relative {
+  position: relative;
+  left: auto;
+  top: auto;
+  bottom: auto;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border: none;
+}
+
+.glass-morph-button.relative:hover,
+.glass-morph-button.relative:focus-visible {
+  background: rgba(137, 137, 137, 0.48);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  color: #fff;
+  border: none;
+  transform: scale(1.02);
+  box-sizing: border-box;
+}
+
+.glass-morph-button.relative.clicked,
+.glass-morph-button.relative:active {
+  background: rgba(137, 137, 137, 0.48);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  color: #fff;
+  border: none;
+  transform: scale(0.98);
+  box-sizing: border-box;
+}
+
+/* Version for contained contexts (like within StaticFillTextHeader) */
+.glass-morph-button.contained {
+  position: relative;
+  top: 20px;
+  bottom: auto;
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: none;
+}
+
+.glass-morph-button.contained:hover,
+.glass-morph-button.contained:focus-visible {
+  background: rgba(137, 137, 137, 0.48);
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  color: #fff;
+  border: none;
+  box-sizing: border-box;
+}
+
+.glass-morph-button.contained.clicked,
+.glass-morph-button.contained:active {
+  background: rgba(137, 137, 137, 0.48);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(7.95px);
+  -webkit-backdrop-filter: blur(7.95px);
+  color: #fff;
+  border: none;
+  transform: scale(0.98);
+  box-sizing: border-box;
+}
+
+.glass-morph-button:active,
+.glass-morph-button:focus,
+.glass-morph-button:visited {
+  outline: none;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
+  background: rgba(137, 137, 137, 0.48);
+  color: #fff;
+}
+
+.button-black-layer {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: #111;
+  border-radius: 75px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 1;
+}
+
+.glass-morph-button:hover .button-black-layer {
+  opacity: 1;
+}
+
+.button-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 

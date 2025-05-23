@@ -1,4 +1,5 @@
 import React from 'react';
+import GlassMorphButton from './GlassMorphButton';
 
 export default function StaticFillTextHeader({
   title = 'Header Title',
@@ -6,6 +7,9 @@ export default function StaticFillTextHeader({
   height = '80vh',
   minHeight = '300px',
   maxHeight = '900px',
+  showButton = false,
+  buttonText = 'Button',
+  onButtonClick = null,
 }) {
   return (
     <section
@@ -31,6 +35,22 @@ export default function StaticFillTextHeader({
             {i !== title.split('\n').length - 1 && <br />}
           </React.Fragment>
         ))}</h1>
+        
+        {showButton && (
+          <div style={{ 
+            position: 'relative', 
+            height: '120px', 
+            marginTop: '40px',
+            width: '100%'
+          }}>
+            <GlassMorphButton 
+              className="contained"
+              onClick={onButtonClick || (() => console.log('Button clicked!'))}
+            >
+              {buttonText}
+            </GlassMorphButton>
+          </div>
+        )}
       </div>
     </section>
   );
