@@ -1,13 +1,38 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Autoplay } from 'swiper/modules';
+import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
+import GlassMorphButton from './GlassMorphButton';
+import './WorkShowreelSliderOverlay.css';
+import ShowreelOverlay from './ShowreelOverlay';
 
 const images = [
   '/work-main-imgs/work 1.jpg',
   '/work-main-imgs/work 2.jpg',
   '/work-main-imgs/work 3.jpg',
+];
+
+const overlayData = [
+  {
+    title: 'Great British Railways',
+    description: "A new era for Britain's railways, uniting track and train under one brand.",
+    availability: '',
+    buttonText: 'View Project',
+  },
+  {
+    title: 'Rail Statistics',
+    description: "A functional app, for train enthusiast's to track\nstations visited across Great Britain and train tickets",
+    availability: '(Now available on iOS, Android coming Late 2025)',
+    buttonText: 'View Project',
+  },
+  {
+    title: 'Internet + Teletext = WEBTEXT',
+    description: 'A retro-inspired concept blending the nostalgia of teletext with the use of todays modern web.',
+    availability: '',
+    buttonText: 'View Project',
+  },
 ];
 
 const outerStyle = {
@@ -40,12 +65,14 @@ export default function WorkShowreelSlider() {
     <div style={outerStyle}>
       <div style={sliderStyle}>
         <Swiper
-          modules={[EffectFade, Autoplay]}
+          modules={[EffectFade, Autoplay, Pagination]}
           effect="fade"
           fadeEffect={{ crossFade: true }}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 15000, disableOnInteraction: false }}
           loop={true}
           slidesPerView={1}
+          pagination={{ clickable: true }}
+          className="work-showreel-swiper"
           style={{ width: '100%', height: '100%' }}
         >
           {images.map((src, idx) => (
@@ -60,6 +87,12 @@ export default function WorkShowreelSlider() {
                   display: 'block',
                   background: '#000',
                 }}
+              />
+              <ShowreelOverlay
+                title={overlayData[idx].title}
+                description={overlayData[idx].description}
+                availability={overlayData[idx].availability}
+                buttonText={overlayData[idx].buttonText}
               />
             </SwiperSlide>
           ))}
