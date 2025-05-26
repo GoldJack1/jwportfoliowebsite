@@ -1,10 +1,17 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import SingleShowreelSlide from '../components/SingleShowreelSlide';
+import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>Contact | Jack Wingate</title>
+        <meta name="description" content="Get in touch with me for project inquiries, collaborations, or questions." />
+        <meta property="og:title" content="Contact | Jack Wingate" />
+        <meta property="og:description" content="Get in touch with me for project inquiries, collaborations, or questions." />
+      </Helmet>
       <SingleShowreelSlide
         overlayData={{
           title: 'Contact',
@@ -16,6 +23,6 @@ export default function Contact() {
         background="linear-gradient(135deg, #00cfff 0%, #000 100%)"
       />
       <Footer />
-    </div>
+    </>
   );
 } 

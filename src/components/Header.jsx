@@ -30,18 +30,49 @@ export default function Header() {
 
   useLayoutEffect(() => {
     if (isMobile) return;
-    const activeIdx = navItems.findIndex(
-      (item) =>
-        item.to === (location.pathname === "/" ? "/" : location.pathname)
-    );
-    const activeLink = navRefs.current[activeIdx];
-    const navBg = activeLink?.parentElement;
-    if (activeLink && navBg && indicatorRef.current) {
-      const navRect = navBg.getBoundingClientRect();
-      const linkRect = activeLink.getBoundingClientRect();
-      indicatorRef.current.style.left = linkRect.left - navRect.left + "px";
-      indicatorRef.current.style.width = linkRect.width + "px";
+
+    let animationFrame;
+    let fontLoadListener;
+
+    function updateIndicator() {
+      const activeIdx = navItems.findIndex(
+        (item) =>
+          item.to === (location.pathname === "/" ? "/" : location.pathname)
+      );
+      const activeLink = navRefs.current[activeIdx];
+      const navBg = activeLink?.parentElement;
+      if (activeLink && navBg && indicatorRef.current) {
+        const navRect = navBg.getBoundingClientRect();
+        const linkRect = activeLink.getBoundingClientRect();
+        // Set a minimum width (e.g., 60px) to prevent shrinking
+        const minWidth = 60;
+        const width = Math.max(linkRect.width, minWidth);
+        indicatorRef.current.style.left = linkRect.left - navRect.left + "px";
+        indicatorRef.current.style.width = width + "px";
+      }
     }
+
+    function handleUpdate() {
+      // Use requestAnimationFrame to ensure layout is stable
+      animationFrame = requestAnimationFrame(updateIndicator);
+    }
+
+    // Initial update
+    handleUpdate();
+    // Update on window resize
+    window.addEventListener("resize", handleUpdate);
+
+    // Update after fonts are loaded (if browser supports it)
+    if (document.fonts && document.fonts.ready) {
+      fontLoadListener = () => handleUpdate();
+      document.fonts.ready.then(fontLoadListener);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleUpdate);
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      // No need to remove fontLoadListener as it's a one-time promise
+    };
   }, [location.pathname, isMobile]);
 
   // Get current page title

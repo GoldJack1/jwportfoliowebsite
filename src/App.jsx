@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import "./style.css";
 import React, { useRef, useState, useEffect } from "react";
 import PageSlider from "./components/PageSlider";
+import { HelmetProvider } from 'react-helmet-async';
 
 const NAV_ORDER = ["/", "/work", "/about", "/contact"];
 
@@ -55,10 +56,12 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <AnimatedRoutes />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Header />
+        <AnimatedRoutes />
+      </Router>
+    </HelmetProvider>
   );
 }
 
