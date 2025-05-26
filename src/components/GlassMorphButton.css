@@ -17,8 +17,8 @@
   gap: 6px;
   position: relative;
   width: auto;
-  margin: 0 auto;
-  top: 20px;
+  margin: 0;
+  top: auto;
   bottom: auto;
   background: rgba(137, 137, 137, 0.48);
   /* Static shadow for all states */
