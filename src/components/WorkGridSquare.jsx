@@ -1,7 +1,7 @@
 import React from 'react';
 import GlassMorphButton from './GlassMorphButton';
 
-export default function WorkGridSquare({ title, buttonText = 'View Project', onButtonClick, background, videoSrc, imagePosition = 'center' }) {
+export default function WorkGridSquare({ title, buttonText = 'View Project', onButtonClick, background, videoSrc, imagePosition = 'center', subText }) {
   return (
     <div
       className="work-grid-card"
@@ -60,21 +60,31 @@ export default function WorkGridSquare({ title, buttonText = 'View Project', onB
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
-        gap: '32px',
+        gap: '24px',
         opacity: 0,
         pointerEvents: 'none',
         transition: 'opacity 0.3s',
         position: 'relative',
         zIndex: 2,
       }}>
-        <div style={{
-          color: '#fff',
-          fontSize: '28pt',
-          fontWeight: 500,
-          lineHeight: 1.1,
-          textAlign: 'left',
-        }}>
-          {title}
+        <div>
+          <div style={{
+            color: '#fff',
+            fontSize: '28pt',
+            fontWeight: 500,
+            lineHeight: 1.1,
+            textAlign: 'left',
+          }}>
+            {title}
+          </div>
+          {subText && (
+            <div style={{
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: '15pt',
+              fontWeight: 400,
+              marginTop: 8,
+            }}>{subText}</div>
+          )}
         </div>
         <GlassMorphButton onClick={onButtonClick}>
           {buttonText}
