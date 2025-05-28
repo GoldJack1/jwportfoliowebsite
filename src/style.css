@@ -416,4 +416,52 @@ main {
 .footer-content.section-inner,
 .footer-bottom.section-inner {
   padding-left: 41px;
+}
+
+.page-fade {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+  pointer-events: auto;
+}
+
+.page-fade-exit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fade-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  z-index: 1;
+  background: none;
+}
+
+/* Optional: Add a fade-stack class for the parent container if needed */
+.fade-stack {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 } 

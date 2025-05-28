@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import 'animate.css';
+import { useLocation } from 'react-router-dom';
+import 'animate.css'; // Re-import animate.css
 import './BluredPageHeader.css';
 
-export default function BluredPageHeader({ title, imageSrc }) {
+export default function BluredPageHeader({ title, imageSrc, animateOn }) {
   // Scroll-based shrinking
   const [headerHeight, setHeaderHeight] = useState(538);
+  const location = useLocation();
+
+  // Sequential fade-in state
+  const [imageVisible, setImageVisible] = useState(false);
+  const [textVisible, setTextVisible] = useState(false);
+
+  useEffect(() => {
+    setImageVisible(false);
+    setTextVisible(false);
+    // Start image fade-in on mount
+    const imageTimeout = setTimeout(() => {
+      setImageVisible(true);
+      // After image fade-in, fade in text
+      setTimeout(() => setTextVisible(true), 400); // 400ms matches image fade duration
+    }, 10); // slight delay to trigger transition
+    return () => {
+      clearTimeout(imageTimeout);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +74,8 @@ export default function BluredPageHeader({ title, imageSrc }) {
           top: 0,
           zIndex: 1,
           pointerEvents: 'none',
+          opacity: imageVisible ? 1 : 0,
+          transition: 'opacity 0.4s cubic-bezier(.4,0,.2,1)',
         }}
       />
       {/* Blurred overlay */}
@@ -103,7 +125,7 @@ export default function BluredPageHeader({ title, imageSrc }) {
           }}
         >
           <h1
-            className="blured-page-header-title animate__animated animate__fadeInUp"
+            className={`blured-page-header-title${textVisible ? ' animate__animated animate__fadeInUp' : ''}`}
             style={{
               fontFamily: 'Geologica, sans-serif',
               fontStyle: 'normal',
@@ -124,6 +146,8 @@ export default function BluredPageHeader({ title, imageSrc }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              opacity: textVisible ? 1 : 0,
+              transition: 'opacity 0.3s cubic-bezier(.4,0,.2,1)',
             }}
           >
             {title}
@@ -164,4 +188,5 @@ export default function BluredPageHeader({ title, imageSrc }) {
 BluredPageHeader.propTypes = {
   title: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
+  animateOn: PropTypes.bool,
 }; 

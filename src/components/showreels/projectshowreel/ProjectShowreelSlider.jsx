@@ -9,6 +9,12 @@ import './ProjectShowreelSliderOverlay.css';
 import ShowreelOverlay from './ShowreelOverlay';
 import { useNavigate } from 'react-router-dom';
 
+// Utility: scroll to top, then navigate
+function navigateWithScrollTop(navigate, to) {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  setTimeout(() => navigate(to), 10); // short delay to ensure scroll
+}
+
 // Default slides: support both images and videos
 const defaultSlides = [
   {
@@ -187,7 +193,7 @@ export default function ProjectShowreelSlider({ slides = defaultSlides, overlayD
                   availability={overlayData[idx].availability}
                   buttonText={overlayData[idx].buttonText}
                   showButton={showButton}
-                  onButtonClick={idx === 0 ? () => navigate('/projects/great-british-railways') : undefined}
+                  onButtonClick={idx === 0 ? () => navigateWithScrollTop(navigate, '/projects/great-british-railways') : undefined}
                 />
               )}
             </SwiperSlide>

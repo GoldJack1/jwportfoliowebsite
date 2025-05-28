@@ -1,3 +1,6 @@
+/* Remove unused animation */
+
+/*
 @keyframes fadeInUpSmooth {
   0% {
     opacity: 0;
@@ -11,4 +14,5 @@
 
 .blured-page-header-title.animate-in {
   animation: fadeInUpSmooth 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-} 
+}
+*/ 

@@ -6,6 +6,12 @@ import GlassMorphButton from '../components/buttons/GlassMorphButton';
 import ProjectGridSquare from '../components/sectionfuctions/ProjectGridSquare';
 import { useNavigate } from 'react-router-dom';
 
+// Utility: scroll to top, then navigate
+function navigateWithScrollTop(navigate, to) {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  setTimeout(() => navigate(to), 10); // short delay to ensure scroll
+}
+
 export default function Projects() {
   const navigate = useNavigate();
 
@@ -50,7 +56,7 @@ export default function Projects() {
                 background: 'url("/project-imgs/project-grid-imgs/1.png") center/cover no-repeat',
                 title: 'Great British Railways',
                 subText: 'Project page coming soon',
-                onButtonClick: () => navigate('/projects/great-british-railways'),
+                onButtonClick: () => navigateWithScrollTop(navigate, '/projects/great-british-railways'),
               },
               {
                 title: `Is there a lack of realism in User Interfaces?`,
