@@ -3,7 +3,18 @@ import Footer from '../../components/mainfunctions/Footer';
 import { Helmet } from 'react-helmet-async';
 import BluredPageHeader from '../../components/sectionfuctions/BluredPageHeader';
 
+function useIsMobile(breakpoint = 700) {
+  const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= breakpoint);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [breakpoint]);
+  return isMobile;
+}
+
 export default function GreatBritishRailways({ animateOn }) {
+  const isMobile = useIsMobile();
   React.useEffect(() => {
     console.log('GreatBritishRailways MOUNTED');
     return () => console.log('GreatBritishRailways UNMOUNTED');
@@ -120,25 +131,47 @@ export default function GreatBritishRailways({ animateOn }) {
               justifyContent: 'center',
               alignItems: 'center',
               padding: '0',
+              minHeight: 240,
+              minWidth: 0,
             }}
           >
-            <iframe
-              style={{
-                border: '1px solid rgba(0, 0, 0, 0.1)',
-                borderRadius: 0,
-                width: '100%',
-                aspectRatio: '16/9',
-                minHeight: 240,
-                maxHeight: '80vh',
-                background: '#fff',
-                display: 'block',
-              }}
-              width="100%"
-              height="720"
-              src="https://embed.figma.com/proto/FkHh8mUk0VdeWrYTuB5TvW/GBR-App-Concept?page-id=0%3A1&node-id=926-16114&p=f&viewport=416%2C343%2C0.03&scaling=scale-down&content-scaling=fixed&starting-point-node-id=926%3A16114&show-proto-sidebar=1&embed-host=share"
-              allowFullScreen
-              title="GBR App Concept Figma Embed"
-            />
+            {isMobile ? (
+              <div
+                style={{
+                  width: '100%',
+                  padding: '32px 16px',
+                  textAlign: 'center',
+                  color: '#ffb347',
+                  background: 'rgba(30,30,30,0.98)',
+                  fontWeight: 600,
+                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  borderRadius: 8,
+                  margin: '32px 0',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
+                }}
+              >
+                Due to browser limitations on mobile,<br />the prototype can only be viewed on desktop.
+              </div>
+            ) : (
+              <iframe
+                style={{
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  borderRadius: 0,
+                  width: '100%',
+                  aspectRatio: '16/9',
+                  minHeight: 240,
+                  maxHeight: '80vh',
+                  background: '#fff',
+                  display: 'block',
+                }}
+                width="100%"
+                height="720"
+                src="https://embed.figma.com/proto/FkHh8mUk0VdeWrYTuB5TvW/GBR-App-Concept?page-id=0%3A1&node-id=926-16114&p=f&viewport=416%2C343%2C0.03&scaling=scale-down&content-scaling=fixed&starting-point-node-id=926%3A16114&show-proto-sidebar=1&embed-host=share"
+                allowFullScreen
+                title="GBR App Concept Figma Embed"
+              />
+            )}
           </div>
         </div>
         <style>{`
