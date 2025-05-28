@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import 'animate.css'; // Re-import animate.css
@@ -8,6 +8,7 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
   // Scroll-based shrinking
   const [headerHeight, setHeaderHeight] = useState(538);
   const location = useLocation();
+  const rafRef = useRef();
 
   // Sequential fade-in state
   const [imageVisible, setImageVisible] = useState(false);
@@ -28,19 +29,30 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
   }, [location.pathname]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Shrink from 538px to 120px over the first 300px of scroll
-      const minHeight = 120;
-      const maxHeight = 538;
-      const shrinkDistance = 300;
-      let newHeight = maxHeight - (scrollY * (maxHeight - minHeight) / shrinkDistance);
-      if (newHeight < minHeight) newHeight = minHeight;
-      if (newHeight > maxHeight) newHeight = maxHeight;
-      setHeaderHeight(newHeight);
-    };
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    function handleScroll() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        ticking = true;
+        rafRef.current = requestAnimationFrame(() => {
+          // Shrink from 538px to 120px over the first 300px of scroll
+          const minHeight = 120;
+          const maxHeight = 538;
+          const shrinkDistance = 300;
+          let newHeight = maxHeight - (lastScrollY * (maxHeight - minHeight) / shrinkDistance);
+          if (newHeight < minHeight) newHeight = minHeight;
+          if (newHeight > maxHeight) newHeight = maxHeight;
+          setHeaderHeight(newHeight);
+          ticking = false;
+        });
+      }
+    }
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (

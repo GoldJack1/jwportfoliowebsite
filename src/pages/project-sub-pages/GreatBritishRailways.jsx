@@ -44,6 +44,7 @@ export default function GreatBritishRailways({ animateOn }) {
           paddingTop: 64,
           paddingBottom: 48,
           width: '100%',
+          overflowX: 'hidden',
         }}
       >
         <h1
@@ -111,8 +112,8 @@ export default function GreatBritishRailways({ animateOn }) {
         </div>
         <div
           style={{
-            width: '100vw',
-            maxWidth: '100vw',
+            width: '100%',
+            maxWidth: '1600px',
             margin: '40px 0',
             padding: '0',
             display: 'flex',
