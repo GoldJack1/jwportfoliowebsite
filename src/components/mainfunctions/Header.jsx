@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/work", label: "Projects" },
+  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
@@ -100,21 +100,29 @@ export default function Header() {
           </div>
           {menuOpen && (
             <div className="mobile-dropdown">
-              {navItems.map((item) => (
-                <button
-                  key={item.to}
-                  className={
-                    "mobile-dropdown-link" +
-                    (item.to === location.pathname ? " active" : "")
-                  }
-                  onClick={() => {
-                    setMenuOpen(false);
-                    navigate(item.to);
-                  }}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                // Custom active logic for Projects
+                let isActive = false;
+                if (item.to === "/projects") {
+                  isActive = location.pathname === "/projects" || location.pathname.startsWith("/projects/");
+                } else {
+                  isActive = item.to === location.pathname;
+                }
+                return (
+                  <button
+                    key={item.to}
+                    className={
+                      "mobile-dropdown-link" + (isActive ? " active" : "")
+                    }
+                    onClick={() => {
+                      setMenuOpen(false);
+                      navigate(item.to);
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
           )}
         </nav>
@@ -127,19 +135,26 @@ export default function Header() {
     <div className="nav-wrapper">
       <nav className="nav-bg">
         <div className="nav-indicator" ref={indicatorRef}></div>
-        {navItems.map((item, idx) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            className={({ isActive }) =>
-              "nav-link" + (isActive ? " active" : "")
-            }
-            ref={(el) => (navRefs.current[idx] = el)}
-            end={item.to === "/"}
-          >
-            {item.label}
-          </NavLink>
-        ))}
+        {navItems.map((item, idx) => {
+          // Custom active logic for Projects
+          let isActive = false;
+          if (item.to === "/projects") {
+            isActive = location.pathname === "/projects" || location.pathname.startsWith("/projects/");
+          } else {
+            isActive = item.to === location.pathname;
+          }
+          return (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={"nav-link" + (isActive ? " active" : "")}
+              ref={(el) => (navRefs.current[idx] = el)}
+              end={item.to === "/"}
+            >
+              {item.label}
+            </NavLink>
+          );
+        })}
       </nav>
     </div>
   );

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
 
 /* Overlay for WorkShowreelSlider */
-.work-showreel-slider-overlay {
+.project-showreel-slider-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
   font-family: 'Geologica';
 }
 
-.work-showreel-swiper {
+.project-showreel-swiper {
   position: relative;
   overflow: visible;
 }
@@ -33,15 +33,15 @@
   text-align: left;
 }
 
-.work-showreel-slider-overlay h1,
-.work-showreel-slider-overlay .subtitle,
-.work-showreel-slider-overlay .availability,
-.work-showreel-slider-overlay .glass-morph-button {
+.project-showreel-slider-overlay h1,
+.project-showreel-slider-overlay .subtitle,
+.project-showreel-slider-overlay .availability,
+.project-showreel-slider-overlay .glass-morph-button {
   text-align: left;
   align-self: flex-start;
 }
 
-.work-showreel-slider-overlay h1 {
+.project-showreel-slider-overlay h1 {
   color: #fff;
   font-size: 35pt;
   font-family: 'Geologica', sans-serif;
@@ -52,8 +52,8 @@
   text-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-.work-showreel-slider-overlay .subtitle,
-.work-showreel-slider-overlay .availability {
+.project-showreel-slider-overlay .subtitle,
+.project-showreel-slider-overlay .availability {
   color: #fff;
   font-size: 15pt;
   font-family: 'Geologica', sans-serif;
@@ -63,14 +63,14 @@
   text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
-.work-showreel-slider-overlay .availability {
+.project-showreel-slider-overlay .availability {
   color: #bdbdbd;
   font-size: 1rem;
   margin: 0 0 18px 0;
   text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-.work-showreel-slider-overlay .glass-morph-button {
+.project-showreel-slider-overlay .glass-morph-button {
   align-self: flex-start !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -81,32 +81,32 @@
 }
 
 @media (max-width: 1075px) {
-  .work-showreel-slider-overlay {
+  .project-showreel-slider-overlay {
     padding: 40px 4vw 40px 4vw;
   }
   .overlay-content-group {
     gap: 16px;
     max-width: 50vw;
   }
-  .work-showreel-slider-overlay h1 {
+  .project-showreel-slider-overlay h1 {
     font-size: 28pt;
     margin-bottom: 6px;
   }
-  .work-showreel-slider-overlay .subtitle {
+  .project-showreel-slider-overlay .subtitle {
     font-size: 18pt;
     margin-bottom: 4px;
   }
-  .work-showreel-slider-overlay .glass-morph-button {
+  .project-showreel-slider-overlay .glass-morph-button {
     margin-top: 12px;
     min-width: 100px;
   }
-  .work-showreel-slider-overlay .availability {
+  .project-showreel-slider-overlay .availability {
     font-size: 13pt;
   }
 }
 
 @media (max-width: 600px) {
-  .work-showreel-slider-mobile {
+  .project-showreel-slider-mobile {
     height: calc(100vh - 180px) !important;
     min-height: 300px;
     aspect-ratio: unset !important;
@@ -117,7 +117,7 @@
     justify-content: stretch;
     position: relative;
   }
-  .work-showreel-slider-overlay {
+  .project-showreel-slider-overlay {
     padding: 32px 6vw 32px 6vw;
     padding-top: 32px;
     padding-bottom: 32px;
@@ -127,18 +127,18 @@
     gap: 6px;
     max-width: 75vw;
   }
-  .work-showreel-slider-overlay h1 {
+  .project-showreel-slider-overlay h1 {
     font-size: 2rem;
     margin-bottom: 10px;
   }
-  .work-showreel-slider-overlay .subtitle {
+  .project-showreel-slider-overlay .subtitle {
     font-size: 1.15rem;
   }
-  .work-showreel-slider-overlay .availability {
+  .project-showreel-slider-overlay .availability {
     font-size: 1rem;
     margin-bottom: 8px;
   }
-  .work-showreel-slider-overlay .glass-morph-button {
+  .project-showreel-slider-overlay .glass-morph-button {
     font-size: 1.1rem;
     min-width: 120px;
     margin-top: 4px;
@@ -150,12 +150,12 @@
 }
 
 @media (max-width: 900px) {
-  .work-showreel-slider-mobile {
+  .project-showreel-slider-mobile {
     height: calc(100vh - 30px) !important;
   }
 }
 
-.work-showreel-swiper .swiper-pagination {
+.project-showreel-swiper .swiper-pagination {
   position: absolute !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
@@ -167,7 +167,7 @@
   align-items: center !important;
 }
 
-.work-showreel-swiper .swiper-pagination-bullet {
+.project-showreel-swiper .swiper-pagination-bullet {
   background: #fff;
   opacity: 0.6;
   width: 14px;
@@ -177,7 +177,7 @@
   transition: opacity 0.2s, background 0.2s;
 }
 
-.work-showreel-swiper .swiper-pagination-bullet-active {
+.project-showreel-swiper .swiper-pagination-bullet-active {
   background: #fff;
   opacity: 1;
   box-shadow: 0 0 0 2px rgba(0,0,0,0.18);

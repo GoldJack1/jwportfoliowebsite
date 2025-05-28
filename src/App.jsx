@@ -1,15 +1,26 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Header from "./components/Header";
+import { BrowserRouter as Router, Routes, Route, useLocation, useParams } from "react-router-dom";
+import Header from "./components/mainfunctions/Header";
 import Home from "./pages/Home";
-import Work from "./pages/Work";
+import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import GreatBritishRailways from "./pages/project-sub-pages/GreatBritishRailways";
 import "./style.css";
 import React, { useRef, useState, useEffect } from "react";
-import PageSlider from "./components/PageSlider";
+import PageSlider from "./components/showreels/projectshowreel/PageSlider";
 import { HelmetProvider } from 'react-helmet-async';
 
-const NAV_ORDER = ["/", "/work", "/about", "/contact"];
+const NAV_ORDER = ["/", "/projects", "/about", "/contact"];
+
+function ProjectsSubPageWrapper() {
+  const { subpage } = useParams();
+  switch (subpage) {
+    case "great-british-railways":
+      return <GreatBritishRailways key="/projects/great-british-railways" />;
+    default:
+      return <Projects key="/projects" />;
+  }
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -20,10 +31,15 @@ function AnimatedRoutes() {
   function getPageElement(path) {
     switch (path) {
       case "/": return <Home key="/" />;
-      case "/work": return <Work key="/work" />;
+      case "/projects": return <Projects key="/projects" />;
       case "/about": return <About key="/about" />;
       case "/contact": return <Contact key="/contact" />;
-      default: return <Home key="/" />;
+      default:
+        if (path.startsWith("/projects/")) {
+          const subpage = path.replace("/projects/", "");
+          return <ProjectsSubPageWrapper key={path} />;
+        }
+        return <Home key="/" />;
     }
   }
 
@@ -59,7 +75,13 @@ function App() {
     <HelmetProvider>
       <Router>
         <Header />
-        <AnimatedRoutes />
+        <Routes>
+          <Route path="/" element={<AnimatedRoutes />} />
+          <Route path="/projects" element={<AnimatedRoutes />} />
+          <Route path="/about" element={<AnimatedRoutes />} />
+          <Route path="/contact" element={<AnimatedRoutes />} />
+          <Route path="/projects/:subpage" element={<AnimatedRoutes />} />
+        </Routes>
       </Router>
     </HelmetProvider>
   );

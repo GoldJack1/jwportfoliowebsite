@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import SingleShowreelSlide from '../components/SingleShowreelSlide';
+import Footer from '../components/mainfunctions/Footer';
+import SingleShowreelSlide from '../components/showreels/staticshowreel/SingleShowreelSlide';
 import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {

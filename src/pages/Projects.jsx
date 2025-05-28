@@ -1,11 +1,14 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import WorkShowreelSlider from '../components/WorkShowreelSlider';
+import Footer from '../components/mainfunctions/Footer';
+import ProjectShowreelSlider from '../components/showreels/projectshowreel/ProjectShowreelSlider';
 import { Helmet } from 'react-helmet-async';
-import GlassMorphButton from '../components/GlassMorphButton';
-import WorkGridSquare from '../components/WorkGridSquare';
+import GlassMorphButton from '../components/buttons/GlassMorphButton';
+import ProjectGridSquare from '../components/sectionfuctions/ProjectGridSquare';
+import { useNavigate } from 'react-router-dom';
 
-export default function Work() {
+export default function Projects() {
+  const navigate = useNavigate();
+
   const handleButtonClick = () => {
     console.log('Work page button clicked!');
     // Add your custom button action here
@@ -20,10 +23,10 @@ export default function Work() {
         <meta property="og:description" content="Browse my featured projects and creative work." />
       </Helmet>
       <div>
-        <WorkShowreelSlider />
+        <ProjectShowreelSlider />
         {/* Grid of 10 square image placeholders */}
         <div
-          className="work-grid-align"
+          className="project-grid-align"
           style={{
             boxSizing: 'border-box',
             padding: 72,
@@ -33,7 +36,7 @@ export default function Work() {
           }}
         >
           <section
-            className="work-grid-section"
+            className="project-grid-section"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -47,6 +50,7 @@ export default function Work() {
                 background: 'url("/work-grid-imgs/1.png") center/cover no-repeat',
                 title: 'Great British Railways',
                 subText: 'Project page coming soon',
+                onButtonClick: () => navigate('/projects/great-british-railways'),
               },
               {
                 title: `Is there a lack of realism in User Interfaces?`,
@@ -101,7 +105,7 @@ export default function Work() {
                 onButtonClick: () => window.location.href = 'https://jackawingate.myportfolio.com/idenity-advertisement-animation-on-leeds-corn-exchange',
               },
             ].map((props, i) => (
-              <WorkGridSquare
+              <ProjectGridSquare
                 key={i}
                 title={props.title}
                 buttonText="View Project"
@@ -116,33 +120,33 @@ export default function Work() {
         </div>
         <style>{`
           @media (max-width: 600px) {
-            .work-grid-section {
+            .project-grid-section {
               grid-template-columns: 1fr !important;
             }
           }
           @media (min-width: 601px) and (max-width: 1199px) {
-            .work-grid-section {
+            .project-grid-section {
               grid-template-columns: repeat(2, 1fr) !important;
             }
           }
           @media (min-width: 1200px) {
-            .work-grid-section {
+            .project-grid-section {
               grid-template-columns: repeat(3, 1fr) !important;
             }
           }
           @media (max-width: 900px) {
-            .work-grid-align {
+            .project-grid-align {
               padding: 16px !important;
             }
           }
-          .work-grid-square {
+          .project-grid-square {
             cursor: pointer;
             transition: box-shadow 0.3s;
           }
-          .work-grid-square:hover {
+          .project-grid-square:hover {
             box-shadow: 0 8px 32px rgba(0,0,0,0.18);
           }
-          .work-grid-overlay {
+          .project-grid-overlay {
             position: absolute;
             inset: 0;
             display: flex;
@@ -155,26 +159,26 @@ export default function Work() {
             transition: opacity 0.3s;
             padding: 30px;
           }
-          .work-grid-square:hover .work-grid-overlay {
+          .project-grid-square:hover .project-grid-overlay {
             opacity: 1;
             pointer-events: auto;
           }
-          .work-grid-overlay-content-group {
+          .project-grid-overlay-content-group {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 32px;
           }
-          .work-grid-overlay-content > * {
+          .project-grid-overlay-content > * {
             align-self: flex-start !important;
           }
-          .work-grid-overlay-content-group > .glass-morph-btn,
-          .work-grid-overlay-content-group > button,
-          .work-grid-overlay-content-group [class*="GlassMorphButton"] {
+          .project-grid-overlay-content-group > .glass-morph-btn,
+          .project-grid-overlay-content-group > button,
+          .project-grid-overlay-content-group [class*="GlassMorphButton"] {
             align-self: flex-start !important;
             margin-left: 0 !important;
           }
-          .work-grid-title {
+          .project-grid-title {
             color: #fff;
             font-size: 28pt;
             font-weight: 700;
@@ -182,7 +186,7 @@ export default function Work() {
             line-height: 1.1;
             text-align: left;
           }
-          .work-grid-overlay-btn {
+          .project-grid-overlay-btn {
             position: absolute;
             left: 30px;
             bottom: 30px;

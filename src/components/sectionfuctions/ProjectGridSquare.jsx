@@ -1,10 +1,10 @@
 import React from 'react';
-import GlassMorphButton from './GlassMorphButton';
+import GlassMorphButton from '../buttons/GlassMorphButton';
 
-export default function WorkGridSquare({ title, buttonText = 'View Project', onButtonClick, background, videoSrc, imagePosition = 'center', subText }) {
+export default function ProjectGridSquare({ title, buttonText = 'View Project', onButtonClick, background, videoSrc, imagePosition = 'center', subText }) {
   return (
     <div
-      className="work-grid-card"
+      className="project-grid-card"
       style={{
         borderRadius: '15px',
         aspectRatio: '1 / 1',
@@ -42,7 +42,7 @@ export default function WorkGridSquare({ title, buttonText = 'View Project', onB
       )}
       {/* Overlay gradient for faded effect, only visible on hover */}
       <div
-        className="work-grid-card-overlay"
+        className="project-grid-card-overlay"
         style={{
           position: 'absolute',
           inset: 0,
@@ -56,7 +56,7 @@ export default function WorkGridSquare({ title, buttonText = 'View Project', onB
           borderRadius: '15px',
         }}
       />
-      <div className="work-grid-card-content" style={{
+      <div className="project-grid-card-content" style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -91,10 +91,10 @@ export default function WorkGridSquare({ title, buttonText = 'View Project', onB
         </GlassMorphButton>
       </div>
       <style>{`
-        .work-grid-card:hover .work-grid-card-overlay {
+        .project-grid-card:hover .project-grid-card-overlay {
           opacity: 1 !important;
         }
-        .work-grid-card:hover .work-grid-card-content {
+        .project-grid-card:hover .project-grid-card-content {
           opacity: 1 !important;
           pointer-events: auto !important;
         }

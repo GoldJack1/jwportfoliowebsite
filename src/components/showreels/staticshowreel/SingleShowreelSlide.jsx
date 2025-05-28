@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ShowreelOverlay from './ShowreelOverlay';
-import './WorkShowreelSliderOverlay.css';
+import ShowreelOverlay from '../projectshowreel/ShowreelOverlay';
+import '../projectshowreel/ProjectShowreelSliderOverlay.css';
 
 const baseContainerStyle = {
   width: '100vw',
@@ -61,7 +61,7 @@ export default function SingleShowreelSlide({
       minWidth: 0,
       minHeight: 0,
     };
-    containerClass = 'work-showreel-slider-mobile';
+    containerClass = 'project-showreel-slider-mobile';
   } else if (isTabletOrSmaller) {
     containerStyle = {
       width: '100vw',
@@ -73,7 +73,7 @@ export default function SingleShowreelSlide({
       minWidth: 0,
       minHeight: 0,
     };
-    containerClass = 'work-showreel-slider-mobile';
+    containerClass = 'project-showreel-slider-mobile';
   }
 
   return (

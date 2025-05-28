@@ -4,9 +4,10 @@ import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
-import GlassMorphButton from './GlassMorphButton';
-import './WorkShowreelSliderOverlay.css';
+import GlassMorphButton from '../../buttons/GlassMorphButton';
+import './ProjectShowreelSliderOverlay.css';
 import ShowreelOverlay from './ShowreelOverlay';
+import { useNavigate } from 'react-router-dom';
 
 // Default slides: support both images and videos
 const defaultSlides = [
@@ -72,12 +73,13 @@ const slideStyle = {
   justifyContent: 'center',
 };
 
-export default function WorkShowreelSlider({ slides = defaultSlides, overlayData = defaultOverlayData, showButton = true, imagePositions = [] }) {
+export default function ProjectShowreelSlider({ slides = defaultSlides, overlayData = defaultOverlayData, showButton = true, imagePositions = [] }) {
   // Add hooks to detect mobile and tablet screen
   const [isMobile, setIsMobile] = useState(false);
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(false);
   const videoRefs = useRef([]);
   const swiperRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkScreen = () => {
@@ -112,7 +114,7 @@ export default function WorkShowreelSlider({ slides = defaultSlides, overlayData
       minWidth: 0,
       minHeight: 0,
     };
-    containerClass = 'work-showreel-slider-mobile';
+    containerClass = 'project-showreel-slider-mobile';
   } else if (isTabletOrSmaller) {
     containerStyle = {
       width: '100vw',
@@ -124,7 +126,7 @@ export default function WorkShowreelSlider({ slides = defaultSlides, overlayData
       minWidth: 0,
       minHeight: 0,
     };
-    containerClass = 'work-showreel-slider-mobile'; // Reuse the class for styling
+    containerClass = 'project-showreel-slider-mobile'; // Reuse the class for styling
   }
 
   return (
@@ -140,7 +142,7 @@ export default function WorkShowreelSlider({ slides = defaultSlides, overlayData
           loop={true}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          className="work-showreel-swiper"
+          className="project-showreel-swiper"
           style={{ width: '100%', height: '100%' }}
           onSlideChange={handleSlideChange}
           onSwiper={(swiper) => { swiperRef.current = swiper; }}
@@ -167,7 +169,7 @@ export default function WorkShowreelSlider({ slides = defaultSlides, overlayData
               ) : (
               <img
                   src={slide.src}
-                alt={`Work Slide ${idx + 1}`}
+                alt={`Project Slide ${idx + 1}`}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -185,6 +187,7 @@ export default function WorkShowreelSlider({ slides = defaultSlides, overlayData
                   availability={overlayData[idx].availability}
                   buttonText={overlayData[idx].buttonText}
                   showButton={showButton}
+                  onButtonClick={idx === 0 ? () => navigate('/projects/great-british-railways') : undefined}
                 />
               )}
             </SwiperSlide>
