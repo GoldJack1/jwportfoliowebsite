@@ -47,7 +47,7 @@ export default function Projects() {
             {/* Only 3 squares, each with a unique gradient background */}
             {[
               {
-                background: 'url("/work-grid-imgs/1.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/1.png") center/cover no-repeat',
                 title: 'Great British Railways',
                 subText: 'Project page coming soon',
                 onButtonClick: () => navigate('/projects/great-british-railways'),
@@ -55,15 +55,15 @@ export default function Projects() {
               {
                 title: `Is there a lack of realism in User Interfaces?`,
                 subText: 'Project page coming soon',
-                background: 'url("/work-grid-imgs/2.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/2.png") center/cover no-repeat',
               },
               {
-                background: 'url("/work-grid-imgs/3.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/3.png") center/cover no-repeat',
                 title: 'Rail Statistics',
                 subText: 'Project page coming soon',
               },
               {
-                background: 'url("/work-grid-imgs/4.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/4.png") center/cover no-repeat',
                 title: '#valueyourtime - D&AD Competition',
                 subText: 'Project page coming soon'
               },
@@ -71,37 +71,37 @@ export default function Projects() {
                 background: '#262626',
                 title: 'Internet + TeleText = WEBTEXT',
                 subText: 'Project page coming soon',
-                videoSrc: '/work-main-imgs/Slide-3-webtext.mp4',
+                videoSrc: '/project-imgs/project-showreel-imgs/Slide-3-webtext.mp4',
                 imagePosition: 'right',
               },
               {
                 title: `Fictionl Train Operator - Clan Loch`,
                 subText: 'Project page coming soon',
-                background: 'url("/work-grid-imgs/6.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/6.png") center/cover no-repeat',
               },
               {
                 title: `A Aoo for Good - Receipty`,
-                background: 'url("/work-grid-imgs/7.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/7.png") center/cover no-repeat',
                 onButtonClick: () => window.location.href = 'https://jackawingate.myportfolio.com/a-app-for-good-receipty',
               },
               {
                 title: `Animated evolution of the Sheffield Supertram`,
-                background: 'url("/work-grid-imgs/8.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/8.png") center/cover no-repeat',
                 onButtonClick: () => window.location.href = 'https://jackawingate.myportfolio.com/reimagined-map-of-the-tram-train-network-in-sheffield',
               },
               {
                 title: `Diabetes Support App - Creative Conscience Competition`,
-                background: 'url("/work-grid-imgs/9.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/9.png") center/cover no-repeat',
                 onButtonClick: () => window.location.href = 'https://jackawingate.myportfolio.com/social-media-advert-promoteing-a-diaqbetes-support-app',
               },
               {
                 title: `The North is 30 years behind the South - Protest & Persuade`,
-                background: 'url("/work-grid-imgs/10.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/10.png") center/cover no-repeat',
                 onButtonClick: () => window.location.href = 'https://jackawingate.myportfolio.com/northern-englands-rail-are-30-years-behind-the-south',
               },
               {
                 title: `Identify a Place - Leeds Corn Exchange`,
-                background: 'url("/work-grid-imgs/11.png") center/cover no-repeat',
+                background: 'url("/project-imgs/project-grid-imgs/11.png") center/cover no-repeat',
                 onButtonClick: () => window.location.href = 'https://jackawingate.myportfolio.com/idenity-advertisement-animation-on-leeds-corn-exchange',
               },
             ].map((props, i) => (

@@ -13,17 +13,17 @@ import { useNavigate } from 'react-router-dom';
 const defaultSlides = [
   {
     type: 'image',
-    src: '/work-main-imgs/work 1.jpg',
+    src: '/project-imgs/project-showreel-imgs/work 1.jpg',
   },
   {
     type: 'video',
-    src: '/work-main-imgs/sample-video.mp4', // Example video (should be mp4)
-    poster: '/work-main-imgs/work 2.jpg', // Optional poster image
+    src: '/project-imgs/project-showreel-imgs/sample-video.mp4', // Example video (should be mp4)
+    poster: '/project-imgs/project-showreel-imgs/work 2.jpg', // Optional poster image
   },
   {
     type: 'video',
-    src: '/work-main-imgs/Slide-3-webtext.mp4',
-    poster: '/work-main-imgs/work 3.jpg', // Use previous image as poster
+    src: '/project-imgs/project-showreel-imgs/Slide-3-webtext.mp4',
+    poster: '/project-imgs/project-showreel-imgs/work 3.jpg', // Use previous image as poster
   },
 ];
 
