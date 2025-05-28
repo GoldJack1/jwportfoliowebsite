@@ -36,11 +36,14 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
       if (!ticking) {
         ticking = true;
         rafRef.current = requestAnimationFrame(() => {
-          // Shrink from 538px to 120px over the first 300px of scroll
+          // Shrink from 538px to 120px over the first 800px of scroll, with ease-in-out
           const minHeight = 120;
           const maxHeight = 538;
-          const shrinkDistance = 300;
-          let newHeight = maxHeight - (lastScrollY * (maxHeight - minHeight) / shrinkDistance);
+          const shrinkDistance = 800;
+          let progress = Math.min(Math.max(lastScrollY / shrinkDistance, 0), 1);
+          // Apply cosine ease-in-out
+          progress = 0.5 - 0.5 * Math.cos(Math.PI * progress);
+          let newHeight = maxHeight - (progress * (maxHeight - minHeight));
           if (newHeight < minHeight) newHeight = minHeight;
           if (newHeight > maxHeight) newHeight = maxHeight;
           setHeaderHeight(newHeight);
