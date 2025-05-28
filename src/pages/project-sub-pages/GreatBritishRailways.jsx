@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../components/Footer';
+import Footer from '../../components/mainfunctions/Footer';
 import { Helmet } from 'react-helmet-async';
 
 export default function GreatBritishRailways() {
