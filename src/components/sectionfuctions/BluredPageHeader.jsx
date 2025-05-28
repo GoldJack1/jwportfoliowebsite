@@ -9,10 +9,17 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
   const [headerHeight, setHeaderHeight] = useState(538);
   const location = useLocation();
   const rafRef = useRef();
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 700);
 
   // Sequential fade-in state
   const [imageVisible, setImageVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 700);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setImageVisible(false);
@@ -29,6 +36,10 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
   }, [location.pathname]);
 
   useEffect(() => {
+    if (isMobile) {
+      setHeaderHeight(538); // Always max height on mobile
+      return;
+    }
     let lastScrollY = window.scrollY;
     let ticking = false;
     function handleScroll() {
@@ -36,14 +47,11 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
       if (!ticking) {
         ticking = true;
         rafRef.current = requestAnimationFrame(() => {
-          // Shrink from 538px to 120px over the first 800px of scroll, with ease-in-out
+          // Shrink from 538px to 120px over the first 300px of scroll (linear)
           const minHeight = 120;
           const maxHeight = 538;
-          const shrinkDistance = 800;
-          let progress = Math.min(Math.max(lastScrollY / shrinkDistance, 0), 1);
-          // Apply cosine ease-in-out
-          progress = 0.5 - 0.5 * Math.cos(Math.PI * progress);
-          let newHeight = maxHeight - (progress * (maxHeight - minHeight));
+          const shrinkDistance = 300;
+          let newHeight = maxHeight - (lastScrollY * (maxHeight - minHeight) / shrinkDistance);
           if (newHeight < minHeight) newHeight = minHeight;
           if (newHeight > maxHeight) newHeight = maxHeight;
           setHeaderHeight(newHeight);
@@ -56,7 +64,7 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
       window.removeEventListener('scroll', handleScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div
