@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './HeroBox.css';
 
 const BACKGROUND_IMAGE = '/home-main-imgs/IMG_6734.JPG';
@@ -7,15 +7,32 @@ const MIN_HEIGHT = 120;
 
 const HeroBox = () => {
   const [height, setHeight] = useState(FIXED_HEIGHT);
+  const rafRef = useRef();
 
   useEffect(() => {
-    const handleScroll = () => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateHeight = () => {
       const scrollY = window.scrollY;
       const newHeight = Math.max(FIXED_HEIGHT - scrollY, MIN_HEIGHT);
       setHeight(newHeight);
+      ticking = false;
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        ticking = true;
+        rafRef.current = requestAnimationFrame(updateHeight);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
