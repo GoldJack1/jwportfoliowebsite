@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/mainfunctions/Footer';
 import { Helmet } from 'react-helmet-async';
-import BluredPageHeader from '../../components/sectionfuctions/BluredPageHeader';
+import HeroBox from '../../components/HeroBox';
 
 function useIsMobile(breakpoint = 700) {
   const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
@@ -28,11 +28,7 @@ export default function GreatBritishRailways({ animateOn }) {
         <meta property="og:title" content="Great British Railways | Jack Wingate" />
         <meta property="og:description" content="A new era for Britain's railways, uniting track and train under one brand." />
       </Helmet>
-      <BluredPageHeader
-        title="Great British Railways"
-        imageSrc="/project-subpage-imgs/greatbritishrailways/header/barry.jpg"
-        animateOn={animateOn}
-      />
+      <HeroBox />
       <div
         style={{
           minHeight: '80vh',

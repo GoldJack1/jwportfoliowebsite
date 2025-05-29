@@ -1,0 +1,23 @@
+.hero-box {
+  width: 100vw;
+  min-height: 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+
+.hero-box-text {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  font-weight: bold;
+  text-align: center;
+  /* Responsive font size: scales between 2rem and 5vw, but never less than 1.5rem */
+  font-size: clamp(1.5rem, 6vw, 4rem);
+  letter-spacing: 0.05em;
+  padding: 0 1rem;
+} 
