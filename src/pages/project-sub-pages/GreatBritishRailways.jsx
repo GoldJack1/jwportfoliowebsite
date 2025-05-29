@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/mainfunctions/Footer';
 import { Helmet } from 'react-helmet-async';
-import HeroBox from '../../components/HeroBox';
+import BluredPageHeader from '../../components/sectionfuctions/BluredPageHeader';
 
 function useIsMobile(breakpoint = 700) {
   const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= breakpoint);
@@ -28,7 +28,11 @@ export default function GreatBritishRailways({ animateOn }) {
         <meta property="og:title" content="Great British Railways | Jack Wingate" />
         <meta property="og:description" content="A new era for Britain's railways, uniting track and train under one brand." />
       </Helmet>
-      <HeroBox />
+      <BluredPageHeader
+        title="Great British Railways"
+        imageSrc="/project-subpage-imgs/greatbritishrailways/header/barry.jpg"
+        animateOn={animateOn}
+      />
       <div
         style={{
           minHeight: '80vh',
@@ -109,67 +113,22 @@ export default function GreatBritishRailways({ animateOn }) {
         <div
           style={{
             width: '100%',
-            maxWidth: '1600px',
+            maxWidth: 900,
             margin: '40px 0',
-            padding: '0',
+            padding: '32px',
+            background: 'rgba(30,30,30,0.85)',
+            borderRadius: 16,
+            boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
             display: 'flex',
-            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 24,
           }}
         >
-          <div
-            style={{
-              width: '100%',
-              maxWidth: '1600px',
-              borderRadius: 0,
-              boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
-              overflow: 'hidden',
-              background: '#181818',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '0',
-              minHeight: 240,
-              minWidth: 0,
-            }}
-          >
-            {isMobile ? (
-              <div
-                style={{
-                  width: '100%',
-                  padding: '32px 16px',
-                  textAlign: 'center',
-                  color: '#ffb347',
-                  background: 'rgba(30,30,30,0.98)',
-                  fontWeight: 600,
-                  fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
-                  border: '1px solid rgba(0,0,0,0.1)',
-                  borderRadius: 8,
-                  margin: '32px 0',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
-                }}
-              >
-                Due to browser limitations on mobile,<br />the prototype can only be viewed on desktop.
-              </div>
-            ) : (
-              <iframe
-                style={{
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
-                  borderRadius: 0,
-                  width: '100%',
-                  aspectRatio: '16/9',
-                  minHeight: 240,
-                  maxHeight: '80vh',
-                  background: '#fff',
-                  display: 'block',
-                }}
-                width="100%"
-                height="720"
-                src="https://embed.figma.com/proto/FkHh8mUk0VdeWrYTuB5TvW/GBR-App-Concept?page-id=0%3A1&node-id=926-16114&p=f&viewport=416%2C343%2C0.03&scaling=scale-down&content-scaling=fixed&starting-point-node-id=926%3A16114&show-proto-sidebar=1&embed-host=share"
-                allowFullScreen
-                title="GBR App Concept Figma Embed"
-              />
-            )}
-          </div>
+          <h2 style={{ color: '#ffb347', fontWeight: 700, fontSize: '2rem', margin: 0 }}>Placeholder Content</h2>
+          <p style={{ color: '#fff', fontSize: '1.2rem', textAlign: 'center', margin: 0 }}>
+            More content will be added here soon. Check back for updates on the Great British Railways project!
+          </p>
         </div>
         <style>{`
           @media (max-width: 900px) {

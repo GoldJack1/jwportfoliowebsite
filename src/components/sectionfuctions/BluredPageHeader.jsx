@@ -1,107 +1,81 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import 'animate.css'; // Re-import animate.css
+import 'animate.css';
 import './BluredPageHeader.css';
 
+const MAX_HEIGHT = 571; // Full height at top
+const MIN_HEIGHT = 120; // Height after shrink
+const MAX_FONT = 87.7; // px, max font size
+const MIN_FONT = 32; // px, min font size
+
+function isTouchDevice() {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0
+  );
+}
+
 export default function BluredPageHeader({ title, imageSrc, animateOn }) {
-  // Scroll-based shrinking
-  const [headerHeight, setHeaderHeight] = useState(538);
   const location = useLocation();
-  const rafRef = useRef();
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 700);
-
-  // Sequential fade-in state
-  const [imageVisible, setImageVisible] = useState(false);
-  const [textVisible, setTextVisible] = useState(false);
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(MAX_HEIGHT);
+  const [fontSize, setFontSize] = useState(MAX_FONT);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 700);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    setImageVisible(false);
-    setTextVisible(false);
-    // Start image fade-in on mount
-    const imageTimeout = setTimeout(() => {
-      setImageVisible(true);
-      // After image fade-in, fade in text
-      setTimeout(() => setTextVisible(true), 400); // 400ms matches image fade duration
-    }, 10); // slight delay to trigger transition
-    return () => {
-      clearTimeout(imageTimeout);
-    };
-  }, [location.pathname]);
-
-  useEffect(() => {
-    if (isMobile) {
-      setHeaderHeight(538); // Always max height on mobile
+    if (isTouchDevice()) {
+      setHeaderHeight(MAX_HEIGHT);
+      setFontSize(MAX_FONT);
       return;
     }
-    let lastScrollY = window.scrollY;
-    let ticking = false;
     function handleScroll() {
-      lastScrollY = window.scrollY;
-      if (!ticking) {
-        ticking = true;
-        rafRef.current = requestAnimationFrame(() => {
-          // Shrink from 538px to 120px over the first 300px of scroll (linear)
-          const minHeight = 120;
-          const maxHeight = 538;
-          const shrinkDistance = 300;
-          let newHeight = maxHeight - (lastScrollY * (maxHeight - minHeight) / shrinkDistance);
-          if (newHeight < minHeight) newHeight = minHeight;
-          if (newHeight > maxHeight) newHeight = maxHeight;
-          setHeaderHeight(newHeight);
-          ticking = false;
-        });
-      }
+      const scrollY = window.scrollY;
+      const shrinkDistance = MAX_HEIGHT - MIN_HEIGHT;
+      const scrolled = Math.min(shrinkDistance, Math.max(0, scrollY));
+      const newHeight = MAX_HEIGHT - scrolled;
+      const newFont = MAX_FONT - ((MAX_FONT - MIN_FONT) * (scrolled / shrinkDistance));
+      setHeaderHeight(newHeight);
+      setFontSize(newFont);
     }
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [isMobile]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div
-      className="blured-page-header-root"
+    <header
+      ref={headerRef}
+      className="blured-page-header-outer"
       style={{
-        position: 'relative',
+        height: `${headerHeight}px`,
         width: '100vw',
         maxWidth: '100vw',
-        height: `${headerHeight}px`,
-        margin: '0 auto',
+        zIndex: 10,
         overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxSizing: 'border-box',
-        paddingTop: headerHeight > 130 ? '100px' : '20px', // reduce padding as it shrinks
-        transition: 'height 0.25s cubic-bezier(.4,0,.2,1), padding-top 0.25s cubic-bezier(.4,0,.2,1)',
+        margin: 0,
+        padding: 0,
+        background: 'transparent',
+        position: 'relative',
+        transition: 'height 0.2s cubic-bezier(.4,0,.2,1)',
       }}
     >
-      {/* Background image (fixed height, does not shrink) */}
+      {/* Background image and overlays */}
       <img
         src={imageSrc}
         alt="Page header background"
         style={{
           position: 'absolute',
           width: '100%',
-          height: '538px', // always full height
+          height: '100%',
           objectFit: 'cover',
           left: 0,
           top: 0,
           zIndex: 1,
           pointerEvents: 'none',
-          opacity: imageVisible ? 1 : 0,
           transition: 'opacity 0.4s cubic-bezier(.4,0,.2,1)',
+          opacity: 1,
         }}
       />
-      {/* Blurred overlay */}
       <div
         style={{
           position: 'absolute',
@@ -115,7 +89,6 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
           zIndex: 2,
         }}
       />
-      {/* Gradient overlay */}
       <div
         className="blured-page-header-gradient"
         style={{
@@ -134,61 +107,61 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
           padding: 30,
           gap: 3,
         }}
+      />
+
+      {/* Centered title */}
+      <div
+        className="blured-page-header-inner"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 4,
+          background: 'transparent',
+        }}
       >
-        <div
+        <h1
+          className={`blured-page-header-title animate__animated animate__fadeInUp`}
           style={{
+            fontFamily: 'Geologica, sans-serif',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            fontSize: `${fontSize}px`,
+            lineHeight: '1.1',
+            color: '#fff',
+            textAlign: 'center',
+            textShadow: '0px 2px 8px rgba(0,0,0,0.25)',
+            fontVariationSettings: "'CRSV' 1, 'SHRP' 0, 'slnt' 0",
+            margin: 0,
+            padding: 0,
+            width: '100%',
+            maxWidth: '90vw',
+            overflow: 'hidden',
+            whiteSpace: 'normal',
+            wordBreak: 'break-word',
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 35,
-            width: '100%',
-            maxWidth: 1021,
-            zIndex: 4,
+            opacity: 1,
+            transition: 'font-size 0.2s cubic-bezier(.4,0,.2,1)',
           }}
         >
-          <h1
-            className={`blured-page-header-title${textVisible ? ' animate__animated animate__fadeInUp' : ''}`}
-            style={{
-              fontFamily: 'Geologica, sans-serif',
-              fontStyle: 'normal',
-              fontWeight: 500,
-              fontSize: 'clamp(2.5rem, 7vw, 87.7px)',
-              lineHeight: '1.1',
-              color: '#fff',
-              textAlign: 'center',
-              textShadow: '0px 2px 8px rgba(0,0,0,0.25)',
-              fontVariationSettings: "'CRSV' 1, 'SHRP' 0, 'slnt' 0",
-              margin: 0,
-              padding: 0,
-              width: '100%',
-              maxWidth: '90vw',
-              overflow: 'hidden',
-              whiteSpace: 'normal',
-              wordBreak: 'break-word',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              opacity: textVisible ? 1 : 0,
-              transition: 'opacity 0.3s cubic-bezier(.4,0,.2,1)',
-            }}
-          >
-            {title}
-          </h1>
-        </div>
+          {title}
+        </h1>
       </div>
       <style>{`
         @media (min-width: 1280px) {
-          .blured-page-header-root {
+          .blured-page-header-outer {
             width: 100vw !important;
             max-width: 100vw !important;
-            padding-top: 100px !important;
           }
         }
         @media (max-width: 900px) {
-          .blured-page-header-root {
-            padding-top: 80px !important;
-          }
           .blured-page-header-gradient {
             padding: 0 !important;
           }
@@ -204,7 +177,7 @@ export default function BluredPageHeader({ title, imageSrc, animateOn }) {
           }
         }
       `}</style>
-    </div>
+    </header>
   );
 }
 
