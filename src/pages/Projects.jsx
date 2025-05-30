@@ -62,6 +62,7 @@ export default function Projects() {
                 title: `Is there a lack of realism in User Interfaces?`,
                 subText: 'Project page coming soon',
                 background: 'url("/project-imgs/project-grid-imgs/2.png") center/cover no-repeat',
+                onButtonClick: () => window.location.href = 'https://www.figma.com/proto/aR39WdBA0rPhfAlbWy1j70/Special-Study?page-id=219%3A13456&node-id=226-17236&p=f&viewport=118%2C697%2C0.02&t=TCfqKaDNyZr24Xmz-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=226%3A17236&show-proto-sidebar=1',
               },
               {
                 background: 'url("/project-imgs/project-grid-imgs/3.png") center/cover no-repeat',
