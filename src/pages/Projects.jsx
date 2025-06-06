@@ -56,7 +56,7 @@ export default function Projects() {
                 background: 'url("/project-imgs/project-grid-imgs/1.png") center/cover no-repeat',
                 title: 'Great British Railways',
                 subText: 'Project page coming soon',
-                onButtonClick: () => navigateWithScrollTop(navigate, '/projects/great-british-railways'),
+                onButtonClick: () => window.location.href = 'https://www.figma.com/proto/FkHh8mUk0VdeWrYTuB5TvW/GBR-App-Concept?page-id=0%3A1&node-id=0-1&p=f&t=O3dJI1ieVvsrb1CN-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=926%3A16114&show-proto-sidebar=1',
               },
               {
                 title: `Is there a lack of realism in User Interfaces?`,
