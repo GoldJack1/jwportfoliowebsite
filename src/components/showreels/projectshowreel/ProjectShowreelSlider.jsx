@@ -88,13 +88,21 @@ export default function ProjectShowreelSlider({ slides = defaultSlides, overlayD
   const navigate = useNavigate();
 
   useEffect(() => {
+    let resizeTimeout;
     const checkScreen = () => {
       setIsMobile(window.innerWidth <= 600);
       setIsTabletOrSmaller(window.innerWidth <= 900);
     };
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkScreen, 150);
+    };
     checkScreen();
-    window.addEventListener('resize', checkScreen);
-    return () => window.removeEventListener('resize', checkScreen);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
+    };
   }, []);
 
   // Handler to play video from start when slide becomes active
@@ -171,11 +179,13 @@ export default function ProjectShowreelSlider({ slides = defaultSlides, overlayD
                   autoPlay
                   muted
                   playsInline
+                  preload={idx === 0 ? "auto" : "none"}
                 />
               ) : (
               <img
                   src={slide.src}
                 alt={`Project Slide ${idx + 1}`}
+                loading={idx === 0 ? "eager" : "lazy"}
                 style={{
                   width: '100%',
                   height: '100%',

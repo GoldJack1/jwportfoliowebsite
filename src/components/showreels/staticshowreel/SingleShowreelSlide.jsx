@@ -39,13 +39,21 @@ export default function SingleShowreelSlide({
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(false);
 
   useEffect(() => {
+    let resizeTimeout;
     const checkScreen = () => {
       setIsMobile(window.innerWidth <= 600);
       setIsTabletOrSmaller(window.innerWidth <= 900);
     };
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkScreen, 150);
+    };
     checkScreen();
-    window.addEventListener('resize', checkScreen);
-    return () => window.removeEventListener('resize', checkScreen);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
+    };
   }, []);
 
   let containerStyle = { ...baseContainerStyle, background: background || baseContainerStyle.background };
@@ -95,11 +103,13 @@ export default function SingleShowreelSlide({
               autoPlay
               muted
               playsInline
+              preload="metadata"
             />
           ) : slide && slide.type === 'image' ? (
             <img
               src={slide.src}
               alt={overlayData?.title || 'Showreel Slide'}
+              loading="eager"
               style={{
                 width: '100%',
                 height: '100%',

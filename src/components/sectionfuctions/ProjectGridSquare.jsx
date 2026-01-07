@@ -28,6 +28,7 @@ export default function ProjectGridSquare({ title, buttonText = 'View Project', 
           loop
           muted
           playsInline
+          preload="none"
           style={{
             position: 'absolute',
             inset: 0,

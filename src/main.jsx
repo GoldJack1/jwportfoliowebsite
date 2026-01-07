@@ -10,7 +10,15 @@ function updateMobileClass() {
     document.body.classList.remove('force-mobile');
   }
 }
-window.addEventListener('resize', updateMobileClass);
+
+// Debounce resize handler for better performance
+let resizeTimeout;
+function handleResize() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(updateMobileClass, 150);
+}
+
+window.addEventListener('resize', handleResize, { passive: true });
 updateMobileClass();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
