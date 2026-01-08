@@ -5,6 +5,7 @@ import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import SiteDesign from "./pages/SiteDesign";
 import GreatBritishRailways from "./pages/project-sub-pages/GreatBritishRailways";
 import ProjectTemplate from "./pages/project-sub-pages/ProjectTemplate";
 import SafeAreaOverlay from "./components/SafeAreaOverlay";
@@ -47,6 +48,7 @@ function AnimatedRoutes() {
       case "/projects": return <Projects key="/projects" />;
       case "/about": return <About key="/about" />;
       case "/contact": return <Contact key="/contact" />;
+      case "/sitedesign": return <SiteDesign key="/sitedesign" />;
       default:
         if (path.startsWith("/projects/")) {
           // This will be handled by ProjectsSubPageWrapper route
@@ -93,6 +95,7 @@ function App() {
               <Route path="/projects" element={<AnimatedRoutes />} />
               <Route path="/about" element={<AnimatedRoutes />} />
               <Route path="/contact" element={<AnimatedRoutes />} />
+              <Route path="/sitedesign" element={<AnimatedRoutes />} />
               <Route path="/projects/:subpage" element={<AnimatedRoutes />} />
               {/* Temporary redirect route for /project/lack-of-realism */}
               <Route path="/project/lack-of-realism" element={<LackOfRealismRedirect />} />
