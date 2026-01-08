@@ -21,6 +21,25 @@ function handleResize() {
 window.addEventListener('resize', handleResize, { passive: true });
 updateMobileClass();
 
+// Add scrolled class when user scrolls down
+let scrollTimeout;
+function handleScroll() {
+  if (window.scrollY > 0) {
+    document.body.classList.add('scrolled');
+  } else {
+    document.body.classList.remove('scrolled');
+  }
+}
+
+// Debounced scroll handler
+function debouncedScroll() {
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(handleScroll, 10);
+}
+
+window.addEventListener('scroll', debouncedScroll, { passive: true });
+handleScroll(); // Check initial scroll position
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
