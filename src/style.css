@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Font Weight Variables */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+}
+
 @font-face {
   font-family: 'Geologica';
   src: url('/fonts/geologica/GeologicaCursive-Thin.woff2') format('woff2');

@@ -18,7 +18,8 @@
 .section-title {
   font-family: 'Geologica', sans-serif;
   font-size: 48px;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold); /* Bold 700 */
+  font-variation-settings: 'CRSV' 1;
   margin-bottom: 40px;
   color: #fff;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -51,7 +52,7 @@
 
 .color-info h3 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 8px;
   color: #fff;
 }
@@ -80,7 +81,7 @@
 
 .typography-info h3 {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 12px;
   color: #fff;
 }
@@ -115,6 +116,7 @@
 .font-weight-text {
   font-family: 'Geologica', sans-serif;
   font-size: 24px;
+  font-variation-settings: 'CRSV' 1;
   color: #fff;
   line-height: 1.5;
 }
@@ -125,7 +127,7 @@
 
 .font-sizes h3 {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 30px;
   color: #fff;
 }
@@ -148,7 +150,7 @@
 /* Responsive Font Sizes */
 .font-sizes-responsive h3 {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 30px;
   color: #fff;
 }
@@ -168,7 +170,7 @@
 
 .responsive-size-label {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   color: #fff;
   margin-bottom: 8px;
 }
@@ -210,7 +212,7 @@
 /* Font Sizes by Mode */
 .font-sizes-by-mode h3 {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 30px;
   color: #fff;
 }
@@ -231,7 +233,7 @@
 
 .mode-column h4 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   color: #fff;
   margin-bottom: 16px;
   padding-bottom: 12px;
@@ -263,7 +265,7 @@
 
 .icons-showcase h3 {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 24px;
   color: #fff;
 }
@@ -287,7 +289,7 @@
 
 .icon-list p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 12px;
   color: #fff;
 }
@@ -315,7 +317,7 @@
 
 .buttons-showcase h3 {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 24px;
   color: #fff;
 }
@@ -341,7 +343,7 @@
 
 .button-states h4 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 16px;
   color: #fff;
 }
@@ -382,7 +384,7 @@
 
 .component-showcase h3 {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 16px;
   color: #fff;
 }
@@ -436,7 +438,7 @@
 
 .token-category h3 {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 16px;
   color: #fff;
 }
@@ -468,7 +470,7 @@
 
 .page-header-example h4 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 16px;
   color: #fff;
 }
@@ -497,7 +499,7 @@
 
 .header-example h4 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 16px;
   color: #fff;
 }
@@ -569,7 +571,7 @@
   height: 33px;
   border-radius: 37px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold); /* Bold 700 */
   color: #fff;
   text-decoration: none;
   background: none;
@@ -641,7 +643,7 @@
   background: transparent;
   border-radius: 30px;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold); /* Bold 700 */
   color: #fff;
   padding: 0 20px;
   height: 34px;
@@ -696,7 +698,7 @@
 
 .mobile-dropdown-example h5 {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   margin-bottom: 12px;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -724,7 +726,7 @@
   border: none;
   color: #fff;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold); /* SemiBold 600 */
   padding: 12px 24px;
   text-align: left;
   border-radius: 18px;

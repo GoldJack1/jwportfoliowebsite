@@ -5,6 +5,7 @@ import SocialMediaIcons from '../components/SocialMediaIcons';
 import BluredPageHeader from '../components/sectionfuctions/BluredPageHeader';
 import ProjectGridSquare from '../components/sectionfuctions/ProjectGridSquare';
 import Footer from '../components/mainfunctions/Footer';
+import { FONT_WEIGHTS } from '../constants/fontWeights';
 import './SiteDesign.css';
 
 export default function SiteDesign() {
@@ -57,8 +58,18 @@ export default function SiteDesign() {
     { name: 'Black 10%', value: 'rgba(0,0,0,0.10)', description: 'Nav shadows' },
   ];
 
-  // Font weights
-  const fontWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+  // Font weights with names
+  const fontWeights = [
+    { name: 'Thin', value: FONT_WEIGHTS.thin },
+    { name: 'ExtraLight', value: FONT_WEIGHTS.extralight },
+    { name: 'Light', value: FONT_WEIGHTS.light },
+    { name: 'Regular', value: FONT_WEIGHTS.regular },
+    { name: 'Medium', value: FONT_WEIGHTS.medium },
+    { name: 'SemiBold', value: FONT_WEIGHTS.semibold },
+    { name: 'Bold', value: FONT_WEIGHTS.bold },
+    { name: 'ExtraBold', value: FONT_WEIGHTS.extrabold },
+    { name: 'Black', value: FONT_WEIGHTS.black },
+  ];
 
   return (
     <>
@@ -105,11 +116,11 @@ export default function SiteDesign() {
               </div>
               <div className="font-weights-grid">
                 {fontWeights.map((weight) => (
-                  <div key={weight} className="font-weight-sample">
-                    <div className="font-weight-label">Weight {weight}</div>
+                  <div key={weight.value} className="font-weight-sample">
+                    <div className="font-weight-label">{weight.name} {weight.value}</div>
                     <div
                       className="font-weight-text"
-                      style={{ fontWeight: weight }}
+                      style={{ fontWeight: weight.value }}
                     >
                       The quick brown fox jumps over the lazy dog
                     </div>
@@ -119,25 +130,25 @@ export default function SiteDesign() {
               <div className="font-sizes">
                 <h3>Font Sizes (Desktop)</h3>
                 <div className="font-size-samples">
-                  <div style={{ fontSize: '93px', fontWeight: 700 }}>93px (Hero Title - Desktop)</div>
-                  <div style={{ fontSize: '87.7px', fontWeight: 500 }}>87.7px (Page Header - Desktop)</div>
-                  <div style={{ fontSize: '48px', fontWeight: 700 }}>48px (Section Title)</div>
-                  <div style={{ fontSize: '35pt', fontWeight: 700 }}>35pt (Showreel Title)</div>
-                  <div style={{ fontSize: '32px', fontWeight: 600 }}>32px (Subsection Title)</div>
-                  <div style={{ fontSize: '28px', fontWeight: 500 }}>28px (Card Title)</div>
-                  <div style={{ fontSize: '28pt', fontWeight: 500 }}>28pt (Project Grid Title)</div>
-                  <div style={{ fontSize: '20px', fontWeight: 600 }}>20px (Card Name, Footer Name)</div>
-                  <div style={{ fontSize: '18px', fontWeight: 400 }}>18px (Body Large)</div>
-                  <div style={{ fontSize: '16px', fontWeight: 400 }}>16px (Body, Navigation)</div>
-                  <div style={{ fontSize: '15pt', fontWeight: 400 }}>15pt (Showreel Description)</div>
-                  <div style={{ fontSize: '14px', fontWeight: 400 }}>14px (Small Text, Footer Copyright)</div>
-                  <div style={{ fontSize: '13pt', fontWeight: 400 }}>13pt (Showreel Availability)</div>
-                  <div style={{ fontSize: '12px', fontWeight: 400 }}>12px (Labels, Captions)</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 400 }}>1.25rem (Button Text - 20px)</div>
-                  <div style={{ fontSize: '1.15rem', fontWeight: 400 }}>1.15rem (Body Large - 18.4px)</div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>1.1rem (Mobile Nav Title - 17.6px)</div>
-                  <div style={{ fontSize: '1rem', fontWeight: 400 }}>1rem (Base - 16px)</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>0.75rem (Mobile Nav Link - 12px)</div>
+                  <div style={{ fontSize: '93px', fontWeight: FONT_WEIGHTS.bold }}>93px (Hero Title - Desktop)</div>
+                  <div style={{ fontSize: '87.7px', fontWeight: FONT_WEIGHTS.medium }}>87.7px (Page Header - Desktop)</div>
+                  <div style={{ fontSize: '48px', fontWeight: FONT_WEIGHTS.bold }}>48px (Section Title)</div>
+                  <div style={{ fontSize: '35pt', fontWeight: FONT_WEIGHTS.bold }}>35pt (Showreel Title)</div>
+                  <div style={{ fontSize: '32px', fontWeight: FONT_WEIGHTS.semibold }}>32px (Subsection Title)</div>
+                  <div style={{ fontSize: '28px', fontWeight: FONT_WEIGHTS.medium }}>28px (Card Title)</div>
+                  <div style={{ fontSize: '28pt', fontWeight: FONT_WEIGHTS.medium }}>28pt (Project Grid Title)</div>
+                  <div style={{ fontSize: '20px', fontWeight: FONT_WEIGHTS.semibold }}>20px (Card Name, Footer Name)</div>
+                  <div style={{ fontSize: '18px', fontWeight: FONT_WEIGHTS.regular }}>18px (Body Large)</div>
+                  <div style={{ fontSize: '16px', fontWeight: FONT_WEIGHTS.regular }}>16px (Body, Navigation)</div>
+                  <div style={{ fontSize: '15pt', fontWeight: FONT_WEIGHTS.regular }}>15pt (Showreel Description)</div>
+                  <div style={{ fontSize: '14px', fontWeight: FONT_WEIGHTS.regular }}>14px (Small Text, Footer Copyright)</div>
+                  <div style={{ fontSize: '13pt', fontWeight: FONT_WEIGHTS.regular }}>13pt (Showreel Availability)</div>
+                  <div style={{ fontSize: '12px', fontWeight: FONT_WEIGHTS.regular }}>12px (Labels, Captions)</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: FONT_WEIGHTS.regular }}>1.25rem (Button Text - 20px)</div>
+                  <div style={{ fontSize: '1.15rem', fontWeight: FONT_WEIGHTS.regular }}>1.15rem (Body Large - 18.4px)</div>
+                  <div style={{ fontSize: '1.1rem', fontWeight: FONT_WEIGHTS.bold }}>1.1rem (Mobile Nav Title - 17.6px)</div>
+                  <div style={{ fontSize: '1rem', fontWeight: FONT_WEIGHTS.regular }}>1rem (Base - 16px)</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: FONT_WEIGHTS.bold }}>0.75rem (Mobile Nav Link - 12px)</div>
                 </div>
               </div>
 
@@ -150,7 +161,7 @@ export default function SiteDesign() {
                   <div className="responsive-size-sample">
                     <div className="responsive-size-label">Hero Title</div>
                     <div className="responsive-size-code">clamp(32px, 8vw, 93px)</div>
-                    <div className="responsive-size-display" style={{ fontSize: 'clamp(32px, 8vw, 93px)', fontWeight: 700 }}>
+                    <div className="responsive-size-display" style={{ fontSize: 'clamp(32px, 8vw, 93px)', fontWeight: FONT_WEIGHTS.bold }}>
                       Desktop: 93px → Tablet: ~56px → Mobile: 32px
                     </div>
                     <div className="responsive-size-breakpoints">
@@ -163,7 +174,7 @@ export default function SiteDesign() {
                   <div className="responsive-size-sample">
                     <div className="responsive-size-label">Hero Title (Tablet)</div>
                     <div className="responsive-size-code">clamp(28px, 7vw, 56px)</div>
-                    <div className="responsive-size-display" style={{ fontSize: 'clamp(28px, 7vw, 56px)', fontWeight: 700 }}>
+                    <div className="responsive-size-display" style={{ fontSize: 'clamp(28px, 7vw, 56px)', fontWeight: FONT_WEIGHTS.bold }}>
                       Scales between 28px and 56px
                     </div>
                     <div className="responsive-size-breakpoints">
@@ -174,7 +185,7 @@ export default function SiteDesign() {
                   <div className="responsive-size-sample">
                     <div className="responsive-size-label">Hero Title (Mobile)</div>
                     <div className="responsive-size-code">clamp(32px, 10vw, 32px)</div>
-                    <div className="responsive-size-display" style={{ fontSize: 'clamp(32px, 10vw, 32px)', fontWeight: 700 }}>
+                    <div className="responsive-size-display" style={{ fontSize: 'clamp(32px, 10vw, 32px)', fontWeight: FONT_WEIGHTS.bold }}>
                       Fixed at 32px on mobile
                     </div>
                     <div className="responsive-size-breakpoints">
@@ -185,7 +196,7 @@ export default function SiteDesign() {
                   <div className="responsive-size-sample">
                     <div className="responsive-size-label">Page Header Title</div>
                     <div className="responsive-size-code">clamp(16px, 4vw, 32px)</div>
-                    <div className="responsive-size-display" style={{ fontSize: 'clamp(16px, 4vw, 32px)', fontWeight: 500 }}>
+                    <div className="responsive-size-display" style={{ fontSize: 'clamp(16px, 4vw, 32px)', fontWeight: FONT_WEIGHTS.medium }}>
                       Scales between 16px and 32px
                     </div>
                     <div className="responsive-size-breakpoints">

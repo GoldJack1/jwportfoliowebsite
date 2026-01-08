@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SocialMediaIcons from '../SocialMediaIcons';
+import { FONT_WEIGHTS } from '../../constants/fontWeights';
 
 export default function Footer() {
   const mainPagesLinks = [
@@ -20,13 +21,16 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-padding-align" style={{
         boxSizing: 'border-box',
-        padding: '72px',
+        padding: '40px 30px',
         width: '100%',
+        maxWidth: '100%',
       }}>
         <div className="footer-content-wrapper" style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '40px',
+          gap: '0px',
+          width: '100%',
+          maxWidth: '100%',
         }}>
           {/* Top Row - Name/Copyright and Social Icons */}
           <div className="footer-top-row" style={{
@@ -34,19 +38,24 @@ export default function Footer() {
             justifyContent: 'space-between',
             alignItems: 'flex-start',
             width: '100%',
+            marginBottom: '40px',
           }}>
             {/* Left Group - Name and Copyright */}
             <div className="footer-branding-group" style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              gap: '1rem',
+              gap: '8px',
             }}>
               <div className="footer-name" style={{
                 color: '#fff',
                 fontFamily: "'Geologica', sans-serif",
                 fontSize: '20px',
-                fontWeight: 600,
+                fontWeight: FONT_WEIGHTS.regular,
+                fontVariationSettings: "'CRSV' 1",
+                lineHeight: '1.2',
+                margin: 0,
+                padding: 0,
               }}>
                 Jack Wingate
               </div>
@@ -54,14 +63,21 @@ export default function Footer() {
                 color: '#fff',
                 fontFamily: "'Geologica', sans-serif",
                 fontSize: '16px',
-                fontWeight: 400,
+                fontWeight: FONT_WEIGHTS.extralight,
+                fontVariationSettings: "'CRSV' 1",
+                lineHeight: '1.2',
+                margin: 0,
+                padding: 0,
               }}>
                 © 2026 All Rights Reserved
               </div>
             </div>
 
             {/* Right Group - Social Media Icons */}
-            <div className="footer-social-group">
+            <div className="footer-social-group" style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+            }}>
               <SocialMediaIcons />
             </div>
           </div>
@@ -69,24 +85,34 @@ export default function Footer() {
           {/* Bottom Row - Navigation Links */}
           <div className="footer-nav-row" style={{
             display: 'flex',
-            gap: '4rem',
-            flexWrap: 'wrap',
+            gap: '164px',
+            flexWrap: 'nowrap',
+            alignItems: 'flex-start',
           }}>
             {/* Main Pages Section */}
-            <nav className="footer-nav-section">
+            <nav className="footer-nav-section" style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+            }}>
               <div className="footer-nav-heading" style={{
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: 'rgba(255, 255, 255, 0.5)',
                 fontFamily: "'Geologica', sans-serif",
-                fontSize: '16px',
-                fontWeight: 400,
-                marginBottom: '16px',
+                fontSize: '15px',
+                fontWeight: FONT_WEIGHTS.regular,
+                fontVariationSettings: "'CRSV' 1",
+                marginBottom: '8px',
+                marginTop: 0,
+                padding: 0,
+                lineHeight: '1.2',
               }}>
                 Main Pages
               </div>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '12px',
+                gap: '8px',
+                alignItems: 'flex-start',
               }}>
                 {mainPagesLinks.map((link) => (
                   <Link
@@ -96,10 +122,14 @@ export default function Footer() {
                     style={{
                       color: '#fff',
                       textDecoration: 'none',
-                      fontSize: '16px',
-                      fontWeight: 400,
+                      fontSize: '11px',
+                      fontWeight: FONT_WEIGHTS.thin,
                       fontFamily: "'Geologica', sans-serif",
+                      fontVariationSettings: "'CRSV' 1",
                       transition: 'opacity 0.2s',
+                      lineHeight: '1.2',
+                      margin: 0,
+                      padding: 0,
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
                     onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
@@ -111,20 +141,29 @@ export default function Footer() {
             </nav>
 
             {/* Other Section */}
-            <nav className="footer-nav-section">
+            <nav className="footer-nav-section" style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+            }}>
               <div className="footer-nav-heading" style={{
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: 'rgba(255, 255, 255, 0.5)',
                 fontFamily: "'Geologica', sans-serif",
-                fontSize: '16px',
-                fontWeight: 400,
-                marginBottom: '16px',
+                fontSize: '15px',
+                fontWeight: FONT_WEIGHTS.regular,
+                fontVariationSettings: "'CRSV' 1",
+                marginBottom: '8px',
+                marginTop: 0,
+                padding: 0,
+                lineHeight: '1.2',
               }}>
                 Other
               </div>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '12px',
+                gap: '8px',
+                alignItems: 'flex-start',
               }}>
                 {otherLinks.map((link) => (
                   <Link
@@ -134,10 +173,14 @@ export default function Footer() {
                     style={{
                       color: '#fff',
                       textDecoration: 'none',
-                      fontSize: '16px',
-                      fontWeight: 400,
+                      fontSize: '11px',
+                      fontWeight: FONT_WEIGHTS.thin,
                       fontFamily: "'Geologica', sans-serif",
+                      fontVariationSettings: "'CRSV' 1",
                       transition: 'opacity 0.2s',
+                      lineHeight: '1.2',
+                      margin: 0,
+                      padding: 0,
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
                     onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
@@ -150,14 +193,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      
-      {/* Bottom Border Line */}
-      <div style={{
-        width: '100%',
-        height: '1px',
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-        marginTop: '40px',
-      }}></div>
 
       <style>{`
         .footer-content-wrapper {
