@@ -27,6 +27,22 @@ export default function Projects() {
         <meta name="description" content="Browse my featured projects and creative work." />
         <meta property="og:title" content="Projects | Jack Wingate" />
         <meta property="og:description" content="Browse my featured projects and creative work." />
+        <meta property="og:image" content="https://jackwingateportfolio.netlify.app/project-imgs/project-showreel-imgs/work%201.jpg" />
+        <meta property="og:url" content="https://jackwingateportfolio.netlify.app/projects" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Projects | Jack Wingate" />
+        <meta name="twitter:description" content="Browse my featured projects and creative work." />
+        <meta name="twitter:image" content="https://jackwingateportfolio.netlify.app/project-imgs/project-showreel-imgs/work%201.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Projects | Jack Wingate",
+            "description": "Browse my featured projects and creative work.",
+            "url": "https://jackwingateportfolio.netlify.app/projects"
+          })}
+        </script>
       </Helmet>
       <div>
         <ProjectShowreelSlider />

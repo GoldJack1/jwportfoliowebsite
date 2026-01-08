@@ -11,6 +11,22 @@ export default function About() {
         <meta name="description" content="Learn more about me, my background, and my skills." />
         <meta property="og:title" content="About | Jack Wingate" />
         <meta property="og:description" content="Learn more about me, my background, and my skills." />
+        <meta property="og:image" content="https://jackwingateportfolio.netlify.app/home-main-imgs/IMG_6734.JPG" />
+        <meta property="og:url" content="https://jackwingateportfolio.netlify.app/about" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About | Jack Wingate" />
+        <meta name="twitter:description" content="Learn more about me, my background, and my skills." />
+        <meta name="twitter:image" content="https://jackwingateportfolio.netlify.app/home-main-imgs/IMG_6734.JPG" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About | Jack Wingate",
+            "description": "Learn more about me, my background, and my skills.",
+            "url": "https://jackwingateportfolio.netlify.app/about"
+          })}
+        </script>
       </Helmet>
       <SingleShowreelSlide
         overlayData={{

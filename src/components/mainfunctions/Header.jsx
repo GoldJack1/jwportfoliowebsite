@@ -130,11 +130,11 @@ export default function Header() {
     );
   }
 
-  // Desktop nav (unchanged)
+  // Desktop nav
   return (
     <div className="nav-wrapper">
-      <nav className="nav-bg">
-        <div className="nav-indicator" ref={indicatorRef}></div>
+      <nav className="nav-bg" role="navigation" aria-label="Main navigation">
+        <div className="nav-indicator" ref={indicatorRef} aria-hidden="true"></div>
         {navItems.map((item, idx) => {
           // Custom active logic for Projects
           let isActive = false;
@@ -150,6 +150,7 @@ export default function Header() {
               className={"nav-link" + (isActive ? " active" : "")}
               ref={(el) => (navRefs.current[idx] = el)}
               end={item.to === "/"}
+              aria-current={isActive ? "page" : undefined}
             >
               {item.label}
             </NavLink>

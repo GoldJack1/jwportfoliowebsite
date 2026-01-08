@@ -1,9 +1,28 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { copyFileSync } from 'fs'
+import { join } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Plugin to copy service worker to dist folder
+    {
+      name: 'copy-service-worker',
+      closeBundle() {
+        try {
+          copyFileSync(
+            join(__dirname, 'public/sw.js'),
+            join(__dirname, 'dist/sw.js')
+          );
+          console.log('Service worker copied to dist');
+        } catch (error) {
+          console.warn('Failed to copy service worker:', error);
+        }
+      },
+    },
+  ],
   server: {
     host: '0.0.0.0', // Allows external connections for mobile testing
     port: 5173,

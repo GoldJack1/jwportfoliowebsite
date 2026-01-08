@@ -127,6 +127,7 @@ export default function SingleShowreelSlide({
               availability={overlayData.availability}
               buttonText={overlayData.buttonText}
               showButton={showButton}
+              onButtonClick={overlayData.onButtonClick}
             />
           )}
         </div>

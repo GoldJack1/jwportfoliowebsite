@@ -143,6 +143,10 @@ body.force-mobile .hero {
   position: relative;
   z-index: 1;
 }
+.nav-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
 .nav-link.active {
   color: #000;
 }
@@ -241,6 +245,10 @@ body.force-mobile .hero {
     padding: 0;
     flex-shrink: 0;
   }
+  .mobile-hamburger:focus-visible {
+    outline: 2px solid #fff !important;
+    outline-offset: 2px !important;
+  }
   .hamburger-bar {
     width: 12px;
     height: 2px;
@@ -282,10 +290,16 @@ body.force-mobile .hero {
   .mobile-dropdown-link.active, .mobile-dropdown-link:focus {
     background: #fff;
     color: #222;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
   }
   .mobile-dropdown-link:hover {
     background: rgba(255,255,255,0.12);
     color: #fff;
+  }
+  .mobile-hamburger:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
   @keyframes fadeInMenu {
     from { opacity: 0; transform: translateY(-10px); }
@@ -293,9 +307,8 @@ body.force-mobile .hero {
   }
 }
 main {
-  margin-top: 65px;
-  padding: 32px;
-  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 .main-container {
   width: 100vw;
