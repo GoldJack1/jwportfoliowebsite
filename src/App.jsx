@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import GreatBritishRailways from "./pages/project-sub-pages/GreatBritishRailways";
 import ProjectTemplate from "./pages/project-sub-pages/ProjectTemplate";
+import SafeAreaOverlay from "./components/SafeAreaOverlay";
+import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import React from "react";
 import { HelmetProvider } from 'react-helmet-async';
@@ -59,6 +61,8 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
+        <SafeAreaOverlay />
         <Header />
         <Routes>
           <Route path="/" element={<AnimatedRoutes />} />

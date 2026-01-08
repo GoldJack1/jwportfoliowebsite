@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    host: '0.0.0.0', // Allows external connections for mobile testing
+    port: 5173,
     allowedHosts: [
       'all',
       'devserver-main--jackwingateportfolio.netlify.app'

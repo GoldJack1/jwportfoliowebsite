@@ -26,8 +26,10 @@ let scrollTimeout;
 function handleScroll() {
   if (window.scrollY > 0) {
     document.body.classList.add('scrolled');
+    document.documentElement.classList.add('scrolled');
   } else {
     document.body.classList.remove('scrolled');
+    document.documentElement.classList.remove('scrolled');
   }
 }
 
