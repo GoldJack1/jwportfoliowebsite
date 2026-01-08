@@ -19,7 +19,7 @@ export default function Footer() {
           gap: '1rem',
           marginTop: '2rem',
         }}>
-          <span style={{fontSize: '1rem', color: 'white'}}>© 2025 All Rights Reserved</span>
+          <span style={{fontSize: '1rem', color: 'white'}}>© {new Date().getFullYear()} All Rights Reserved</span>
           <SocialMediaIcons />
         </div>
       </div>

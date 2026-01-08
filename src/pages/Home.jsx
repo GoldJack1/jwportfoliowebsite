@@ -18,7 +18,7 @@ export default function Home() {
           overlayData={{
             title: "Welcome to my portfolio",
             description: "This website is currently under construction, please check back soon for updates.",
-            availability: "(Should be completed by July 2025)",
+            availability: "(Will be completed by Spring 2026!",
             buttonText: ""
           }}
           showButton={false}
