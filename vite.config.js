@@ -26,10 +26,12 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // Allows external connections for mobile testing
     port: 5173,
-    allowedHosts: [
-      'all',
-      'devserver-main--jackwingateportfolio.netlify.app'
-    ]
+    allowedHosts: true,
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 4173,
+    allowedHosts: true,
   },
   build: {
     // Enable code splitting and optimize chunks
